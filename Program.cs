@@ -8,7 +8,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Program Class
+    /// Program Class. Runs the program prompting the user for values to create a BST.
     /// </summary>
     public class Program
     {
