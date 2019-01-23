@@ -38,7 +38,7 @@
         }
 
         /// <summary>
-        /// Test function
+        /// Tests insertion, the CountSize method, and tree size, levels, and minimum levels statistics by comparing values to known correct vaues.
         /// </summary>
         [Test]
         public void TreeStatisticsTest()
