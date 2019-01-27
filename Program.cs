@@ -1,4 +1,9 @@
-﻿namespace CptS_321_HW1
+﻿//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace CptS_321_HW1
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +13,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Program Class. Runs the program prompting the user for values to create a BST.
+    /// Program class for HW1, defines and implements a BST class, prompts user for input, and prints statistics about the BST.
     /// </summary>
     public class Program
     {
@@ -38,7 +43,7 @@
         }
 
         /// <summary>
-        /// Tests insertion, the CountSize method, and tree size, levels, and minimum levels statistics by comparing values to known correct vaues.
+        /// Tests an implementation of the BST class, inserting a sequence of 5 values and checking the statistics produced.
         /// </summary>
         [Test]
         public void TreeStatisticsTest()
@@ -61,11 +66,15 @@
         }
 
         /// <summary>
-        /// BSTNode class, defining a single node with internal data and links to left and right BSTNodes. 
+        /// BSTNode class, defining a single node with internal data and links to left and right BSTNodes.
         /// For use in a Binary Search Tree Data Structure.
         /// </summary>
         public class BSTNode
         {
+            private BSTNode leftNode;
+            private BSTNode rightNode;
+            private int nodeData;
+
             /// <summary>
             /// Initializes a new instance of the <see cref="BSTNode" /> class. accepts an integer to be assigned to the new node's nodeData variable.
             /// </summary>
@@ -103,10 +112,6 @@
                 get { return this.nodeData; }
                 set { this.nodeData = value; }
             }
-
-            private BSTNode leftNode;
-            private BSTNode rightNode;
-            private int nodeData;
         }
 
         /// <summary>
@@ -116,6 +121,10 @@
         /// </summary>
         public class BST
         {
+            private int treeLevels;
+            private int treeSize;
+            private BSTNode headNode;
+
             /// <summary>
             /// Initializes a new instance of the <see cref="BST" /> class.
             /// </summary>
@@ -127,6 +136,24 @@
             }
 
             /// <summary>
+            /// Gets or sets the treeLevels variable.
+            /// </summary>
+            public int TreeLevels
+            {
+                get { return this.treeLevels; }
+                set { this.treeLevels = value; }
+            }
+
+            /// <summary>
+            /// Gets or sets the treeSize variable.
+            /// </summary>
+            public int TreeSize
+            {
+                get { return this.treeSize; }
+                set { this.treeSize = value; }
+            }
+
+            /// <summary>
             /// Public insert function, accepting integer data to be inserted, making a new node with the data, and calling the recursive insert.
             /// </summary>
             /// <param name="newData"> Integer value to be inserted into the BST </param>
@@ -134,13 +161,12 @@
             public bool Insert(int newData)
             {
                 bool success = false;
-
                 BSTNode newNode = new CptS_321_HW1.Program.BSTNode(newData);
-
                 if (newNode != null)
                 {
                     success = this.Insert(newNode, this.headNode, 1);
                 }
+
                 return success;
             }
 
@@ -175,25 +201,7 @@
             }
 
             /// <summary>
-            /// Gets or sets the treeLevels variable.
-            /// </summary>
-            public int TreeLevels
-            {
-                get { return this.treeLevels; }
-                set { this.treeLevels = value; }
-            }
-
-            /// <summary>
-            /// Gets or sets the treeSize variable.
-            /// </summary>
-            public int TreeSize
-            {
-                get { return this.treeSize; }
-                set { this.treeSize = value; }
-            }
-
-            /// <summary>
-            /// Private recursive insert, accepting a newNode to be added, a current node, and a current level. 
+            /// Private recursive insert, accepting a newNode to be added, a current node, and a current level.
             /// </summary>
             /// <param name="newNode"> New constructed node containing the data to be inserted </param>
             /// <param name="currentNode"> The current node in the recursive cycle </param>
@@ -218,9 +226,9 @@
                             {
                                 this.treeLevels = level;
                             }
+
                             success = true;
                         }
-
                     }
 
                     if (newNode.NodeData > currentNode.NodeData)
@@ -237,6 +245,7 @@
                             {
                                 this.treeLevels = level;
                             }
+
                             success = true;
                         }
                     }
@@ -253,8 +262,10 @@
                     {
                         this.treeLevels = level;
                     }
+
                     success = true;
                 }
+
                 return success;
             }
 
@@ -285,10 +296,6 @@
                     this.treeSize++;
                 }
             }
-
-            private int treeLevels;
-            private int treeSize;
-            private BSTNode headNode;
         }
     }
 }
