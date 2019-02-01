@@ -37,6 +37,9 @@
         /// <param name="userArray"> input parameter userArray as an array of integers </param>
         /// <returns> Returns the number of distinct integers in the parameter array as an int </returns>
         [TestCase(new int[] { 1, 2, 1, 2, 1, 2, 3, 3 }, ExpectedResult = 3)]
+        [TestCase(new int[] { }, ExpectedResult = 0)]
+        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, }, ExpectedResult = 1)]
+        [TestCase(new int[] { 0, 20000 }, ExpectedResult = 2)]
         public int CountDistinctHash(int[] userArray)
         {
             HashSet<int> set = new HashSet<int>();
@@ -54,6 +57,9 @@
         /// <param name="userArray"> input parameter userArray as an array of integers </param>
         /// <returns> Returns the number of distinct integers in the parameter array as an int </returns>
         [TestCase(new int[] { 1, 2, 1, 2, 1, 2, 3, 3 }, ExpectedResult = 3)]
+        [TestCase(new int[] { }, ExpectedResult = 0)]
+        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, }, ExpectedResult = 1)]
+        [TestCase(new int[] { 0, 20000 }, ExpectedResult = 2)]
         public int CountDistinctConstant(int[] userArray)
         {
             int count = 0;
@@ -80,6 +86,9 @@
         /// <param name="userArray"> input parameter userArray as an array of integers </param>
         /// <returns> Returns the number of distinct integers in the parameter array as an int </returns>
         [TestCase(new int[] { 1, 2, 1, 2, 1, 2, 3, 3 }, ExpectedResult = 3)]
+        [TestCase(new int[] { }, ExpectedResult = 0)]
+        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, }, ExpectedResult = 1)]
+        [TestCase(new int[] { 0, 20000 }, ExpectedResult = 2)]
         public int CountDistinctSort(int[] userArray)
         {
             int prevElement = -1;
