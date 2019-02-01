@@ -26,12 +26,21 @@
         public Form1()
         {
             int[] userArray = new int[10000];
+            FunctionClass utilityFunction = new FunctionClass();
+
+            utilityFunction.PopulateArrayRandom(userArray);
+            this.distinctHash = utilityFunction.CountDistinctHash(userArray);
+            this.distinctConstant = utilityFunction.CountDistinctConstant(userArray);
+            this.distinctSort = utilityFunction.CountDistinctSort(userArray);
+
             this.InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.textBox1.Text = "Test";
+            this.textBox1.Text = "HashSet Method: " + this.distinctHash.ToString() +
+                "\r\nO(1) Storage Method: " + this.distinctConstant.ToString() +
+                "\r\nSort Method: " + this.distinctSort.ToString();
         }
     }
 }
