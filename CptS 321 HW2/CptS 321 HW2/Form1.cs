@@ -16,6 +16,7 @@
     /// </summary>
     public partial class Form1 : Form
     {
+        // Variables to store the return values of the 3 different count distinct methods.
         private int distinctHash = 0;
         private int distinctConstant = 0;
         private int distinctSort = 0;
@@ -38,9 +39,11 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.textBox1.Text = "HashSet Method: " + this.distinctHash.ToString() +
-                "\r\nO(1) Storage Method: " + this.distinctConstant.ToString() +
-                "\r\nSort Method: " + this.distinctSort.ToString();
+            this.textBox1.Text = "1. HashSet Method: " + this.distinctHash.ToString() +
+                "\r\n\r\nIn this implementation, for each item in the initial array, the HashSet function add() is called. add() has a time complexity of O(1) as with a hash function only one comparison is needed for any insertion. This happens N times, so the overall time complexity of the method is O(N).\r\n" +
+                "\r\n2. O(1) Storage Method: " + this.distinctConstant.ToString() +
+                "\r\n\r\nWhile this implementation requires a traversal through the initial array and a traversal through an additional array, the size of the second array is fixed (at 20,000 items), so the method has a time complexity of O(N) and a space complexity of just O(1) not including the space allocated to the initial array.\r\n" +
+                "\r\n3. Sort Method: " + this.distinctSort.ToString();
         }
     }
 }
