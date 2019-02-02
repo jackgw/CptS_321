@@ -1,4 +1,11 @@
-﻿namespace CptS_321_HW2
+﻿//-----------------------------------------------------------------
+// <copyright file="Form1.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------
+// Jack Wharton 11506329
+
+namespace CptS_321_HW2
 {
     using System;
     using System.Collections.Generic;
