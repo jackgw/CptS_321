@@ -1,0 +1,25 @@
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe.config
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.csprojResolveAssemblyReference.cache
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\CptS 321\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe.config
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.csprojResolveAssemblyReference.cache
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\nunit.framework.dll
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\nunit.framework.pdb
+C:\Users\jackg\Desktop\CptS 321\Homework\CptS 321 HW1\CptS 321 HW1\bin\Debug\nunit.framework.xml
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe.config
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.XML
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.exe
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\CptS 321 HW1.pdb
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\nunit.framework.dll
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\nunit.framework.pdb
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\bin\Debug\nunit.framework.xml
+C:\Users\jackg\Desktop\HW1\CptS 321 HW1\obj\Debug\CptS 321 HW1.csprojResolveAssemblyReference.cache

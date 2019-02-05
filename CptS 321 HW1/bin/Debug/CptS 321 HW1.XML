@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CptS 321 HW1</name>
+    </assembly>
+    <members>
+        <member name="T:CptS_321_HW1.Program">
+            <summary>
+            Program class for HW1, defines and implements a BST class, prompts user for input, and prints statistics about the BST.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.Main(System.String[])">
+            <summary>
+            Prompts the user to input a sequence of integers, inserts those integers into a BST, and prints the contents of the BST
+            in order, as well as statistics about the BST such as the size, levels, and theoretical minimum levels required.
+            </summary>
+            <param name="args"> External input strings </param>
+        </member>
+        <member name="M:CptS_321_HW1.Program.TreeStatisticsTest">
+            <summary>
+            Tests an implementation of the BST class, inserting a sequence of 5 values and checking the statistics produced.
+            </summary>
+        </member>
+        <member name="T:CptS_321_HW1.Program.BSTNode">
+            <summary>
+            BSTNode class, defining a single node with internal data and links to left and right BSTNodes.
+            For use in a Binary Search Tree Data Structure.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BSTNode.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS_321_HW1.Program.BSTNode" /> class. accepts an integer to be assigned to the new node's nodeData variable.
+            </summary>
+            <param name="newData"> Integer data to be stored in the created node </param>
+        </member>
+        <member name="P:CptS_321_HW1.Program.BSTNode.LeftNode">
+            <summary>
+            Gets or sets leftNode variable.
+            </summary>
+        </member>
+        <member name="P:CptS_321_HW1.Program.BSTNode.RightNode">
+            <summary>
+            Gets or sets rightNode variable.
+            </summary>
+        </member>
+        <member name="P:CptS_321_HW1.Program.BSTNode.NodeData">
+            <summary>
+            Gets or sets nodeData variable.
+            </summary>
+        </member>
+        <member name="T:CptS_321_HW1.Program.BST">
+            <summary>
+            BST class, providing implementation for the Binary Search Tree data structure. Contains a head node and internal level and size data with
+            getters and setters, as well as functionality for the insert, print in order, and count size methods.
+            Requires the use of BSTNode class for individual nodes.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS_321_HW1.Program.BST" /> class.
+            </summary>
+        </member>
+        <member name="P:CptS_321_HW1.Program.BST.TreeLevels">
+            <summary>
+            Gets or sets the treeLevels variable.
+            </summary>
+        </member>
+        <member name="P:CptS_321_HW1.Program.BST.TreeSize">
+            <summary>
+            Gets or sets the treeSize variable.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.Insert(System.Int32)">
+            <summary>
+            Public insert function, accepting integer data to be inserted, making a new node with the data, and calling the recursive insert.
+            </summary>
+            <param name="newData"> Integer value to be inserted into the BST </param>
+            <returns> True if node inserted successfully, false otherwise </returns>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.PrintInOrder">
+            <summary>
+            Public print function, calling the private recursive print.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.CountSize">
+            <summary>
+            Public count function, calling private recursive count.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.PrintStats">
+            <summary>
+            Print statistics function, calling the countSize function and printing the value of treeSize and treeLevels, as well as
+            calculating the theoretical minimum levels needed for a BST of that size.
+            </summary>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.Insert(CptS_321_HW1.Program.BSTNode,CptS_321_HW1.Program.BSTNode,System.Int32)">
+            <summary>
+            Private recursive insert, accepting a newNode to be added, a current node, and a current level.
+            </summary>
+            <param name="newNode"> New constructed node containing the data to be inserted </param>
+            <param name="currentNode"> The current node in the recursive cycle </param>
+            <param name="level"> The level of the current node </param>
+            <returns> Returns true if newNode inserted successfully. </returns>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.PrintInOrder(CptS_321_HW1.Program.BSTNode)">
+            <summary>
+            Private recursive print function, traversing the BST in order and printing all values.
+            </summary>
+            <param name="currentNode"> Current node in the recursive traversal </param>
+        </member>
+        <member name="M:CptS_321_HW1.Program.BST.CountSize(CptS_321_HW1.Program.BSTNode)">
+            <summary>
+            Private recursive count function, traversing the entire list and counting the total number of nodes, updating the treeSize variable.
+            </summary>
+            <param name="currentNode"> The current node in the recursive traversal </param>
+        </member>
+    </members>
+</doc>
