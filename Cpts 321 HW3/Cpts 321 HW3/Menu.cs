@@ -1,5 +1,11 @@
-﻿// Jack Wharton
+﻿//-----------------------------------------------------------------
+// <copyright file="Menu.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------
+// Jack Wharton
 // 11506329
+
 namespace Cpts_321_HW3
 {
     using System;
@@ -13,8 +19,14 @@ namespace Cpts_321_HW3
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// Primary form class, managing the window.
+    /// </summary>
     public partial class Menu : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Menu"/> class.
+        /// </summary>
         public Menu()
         {
             this.InitializeComponent();
