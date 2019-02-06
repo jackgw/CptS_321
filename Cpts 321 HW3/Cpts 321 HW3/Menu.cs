@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-
+﻿// Jack Wharton
+// 11506329
 namespace Cpts_321_HW3
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
     public partial class Menu : Form
     {
         public Menu()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,7 +27,7 @@ namespace Cpts_321_HW3
 
         private void LoadText(TextReader sr)
         {
-            
+
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
