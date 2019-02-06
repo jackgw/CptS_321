@@ -5,19 +5,19 @@
 //-----------------------------------------------------------------
 // Jack Wharton 11506329
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using NUnit.Framework;
+
 namespace CptS_321_HW2
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
-    using NUnit.Framework;
-
     /// <summary>
     /// Class for the form window, managing input and controling output.
     /// </summary>
