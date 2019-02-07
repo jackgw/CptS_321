@@ -37,24 +37,46 @@ namespace Cpts_321_HW3
 
         }
 
+        private void OpenDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void SaveDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
         private void LoadText(TextReader sr)
         {
-
+            this.textBox.Text = sr.ReadToEnd();
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void LoadFromFile_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (this.openDialog.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader inFile = new StreamReader(this.openDialog.FileName);
+                this.LoadText(inFile);
+            }
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void LoadFibbinachiSequence50_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // load 50 fibonacci items
         }
 
-        private void load50FibbinachiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadFibonacciSequence100_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // load 100 fibonacci items
+        }
 
+        private void SaveToFile_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(this.saveDialog.FileName, this.textBox.Text);
+            }
         }
     }
 }

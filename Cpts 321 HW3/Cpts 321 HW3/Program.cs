@@ -14,13 +14,16 @@ namespace Cpts_321_HW3
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    static class Program
+    /// <summary>
+    /// Program class launching main.
+    /// </summary>
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
