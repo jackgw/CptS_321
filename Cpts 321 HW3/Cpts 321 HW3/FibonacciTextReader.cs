@@ -11,6 +11,7 @@ namespace Cpts_321_HW3
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Numerics;
     using System.Text;
     using System.Threading.Tasks;
     using NUnit.Framework;
@@ -20,10 +21,19 @@ namespace Cpts_321_HW3
     /// </summary>
     public class FibonacciTextReader : System.IO.TextReader
     {
-        private int prevNum1;
-        private int prevNum2;
+        private BigInteger prevNum1;
+        private BigInteger prevNum2;
         private int lineNumber;
         private int maxLines;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FibonacciTextReader"/> class.
+        /// </summary>
+        public FibonacciTextReader()
+        {
+            this.lineNumber = 0;
+            this.maxLines = 100; // default value (for tests)
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FibonacciTextReader"/> class.
@@ -31,7 +41,8 @@ namespace Cpts_321_HW3
         /// <param name="maxLinesAvailable">The integer value of the max lines available for the file</param>
         public FibonacciTextReader(int maxLinesAvailable)
         {
-
+            this.lineNumber = 0;
+            this.maxLines = maxLinesAvailable;
         }
 
         /// <summary>
@@ -40,7 +51,26 @@ namespace Cpts_321_HW3
         /// <returns>The next number in the fibonacci sequence as a string</returns>
         public string ReadLine()
         {
-
+            if (this.lineNumber == 0)
+            {
+                this.prevNum1 = 0;
+                this.lineNumber++;
+                return "0";
+            }
+            else if (this.lineNumber == 1)
+            {
+                this.prevNum2 = 1;
+                this.lineNumber++;
+                return "1";
+            }
+            else
+            {
+                BigInteger temp = this.prevNum2;
+                this.prevNum2 += this.prevNum1;
+                this.prevNum1 = temp;
+                this.lineNumber++;
+                return this.prevNum2.ToString();
+            }
         }
 
         /// <summary>
@@ -49,7 +79,14 @@ namespace Cpts_321_HW3
         /// <returns>a string </returns>
         public string ReadToEnd()
         {
+            string allLines = string.Empty;
+            this.lineNumber = 0;
+            while (this.lineNumber < this.maxLines)
+            {
+                allLines += this.ReadLine() + "\r\n";
+            }
 
+            return allLines;
         }
 
         /// <summary>
@@ -58,16 +95,16 @@ namespace Cpts_321_HW3
         [Test]
         public void First10_FibonacciTest()
         {
-            Assert.AreEqual(int.Parse(this.ReadLine()), 0);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 1);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 1);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 2);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 3);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 5);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 8);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 13);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 21);
-            Assert.AreEqual(int.Parse(this.ReadLine()), 34);
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "0");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "1");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "1");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "2");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "3");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "5");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "8");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "13");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "21");
+            StringAssert.AreEqualIgnoringCase(this.ReadLine(), "34");
         }
 
         /// <summary>
@@ -79,6 +116,16 @@ namespace Cpts_321_HW3
             this.maxLines = 10;
             this.ReadToEnd();
             Assert.AreEqual(this.lineNumber, this.maxLines);
+        }
+
+        /// <summary>
+        /// Tests the output of the ReadToEnd function when maxLines is set to 5
+        /// </summary>
+        [Test]
+        public void ReadAllLinesTest()
+        {
+            this.maxLines = 5;
+            StringAssert.AreEqualIgnoringCase(this.ReadToEnd(), "0\r\n1\r\n1\r\n2\r\n3\r\n");
         }
     }
 }
