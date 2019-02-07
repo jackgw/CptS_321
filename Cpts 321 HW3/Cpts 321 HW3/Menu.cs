@@ -51,6 +51,7 @@ namespace Cpts_321_HW3
 
         private void LoadFromFile_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.openDialog.Filter = "Text File | *.txt";
             if (this.openDialog.ShowDialog() == DialogResult.OK)
             {
                 StreamReader inFile = new StreamReader(this.openDialog.FileName);
@@ -72,6 +73,7 @@ namespace Cpts_321_HW3
 
         private void SaveToFile_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.saveDialog.Filter = "Text File | *.txt";
             if (this.saveDialog.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(this.saveDialog.FileName, this.textBox.Text);
