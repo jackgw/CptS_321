@@ -56,6 +56,7 @@ namespace Cpts_321_HW3
             {
                 StreamReader inFile = new StreamReader(this.openDialog.FileName);
                 this.LoadText(inFile);
+                inFile.Close();
             }
         }
 
