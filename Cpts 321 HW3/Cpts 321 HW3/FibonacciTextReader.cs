@@ -49,7 +49,7 @@ namespace Cpts_321_HW3
         /// Calculates the next number in the fibonacci sequence based on the value of this.lineNumber
         /// </summary>
         /// <returns>The next number in the fibonacci sequence as a string</returns>
-        public string ReadLine()
+        public override string ReadLine()
         {
             if (this.lineNumber == 0)
             {
@@ -77,7 +77,7 @@ namespace Cpts_321_HW3
         /// Calls ReadLine as many times as specified by this.maxLines, and concatenates results to a single string
         /// </summary>
         /// <returns>a string </returns>
-        public string ReadToEnd()
+        public override string ReadToEnd()
         {
             string allLines = string.Empty;
             this.lineNumber = 0;
