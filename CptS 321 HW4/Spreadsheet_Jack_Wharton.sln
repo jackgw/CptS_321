@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CptS 321 HW4", "CptS 321 HW4\CptS 321 HW4.csproj", "{CDD19A6B-9F29-4AD3-9ED3-495D662ED3A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spreadsheet_Jack_Wharton", "CptS 321 HW4\Spreadsheet_Jack_Wharton.csproj", "{CDD19A6B-9F29-4AD3-9ED3-495D662ED3A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
