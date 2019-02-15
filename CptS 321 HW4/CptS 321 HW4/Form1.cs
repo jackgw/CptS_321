@@ -10,8 +10,16 @@
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// Form class managing the winForms window
+    /// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1"/> class.
+        /// Resizes the Window to 800x600
+        /// Adds columns A-Z and rows 1-50 to the grid
+        /// </summary>
         public Form1()
         {
             char letter = 'A';
@@ -19,7 +27,7 @@
             this.InitializeComponent();
 
             /* Resize form window */
-            this.Size = new System.Drawing.Size(800, 500);
+            this.Size = new System.Drawing.Size(800, 600);
 
             /* Create columns A through Z */
             for (letter = 'A'; letter != '['; letter++)
@@ -38,7 +46,6 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

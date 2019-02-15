@@ -6,6 +6,9 @@
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// Primary Program class, starting the form execution
+    /// </summary>
     public static class Program
     {
         /// <summary>
