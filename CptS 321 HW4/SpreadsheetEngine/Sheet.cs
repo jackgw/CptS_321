@@ -1,7 +1,8 @@
-﻿namespace CptS321
+﻿namespace CptS_321_HW4
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -11,6 +12,7 @@
     /// </summary>
     public class Sheet
     {
+
         private Cell[,] cells;
         private int columnCount;
         private int rowCount;
@@ -23,7 +25,18 @@
         /// <param name="rows">Number of Rows</param>
         public Sheet(int columns, int rows)
         {
-            this.cells = new Cell[columns, rows];
+            int i, j = 0;
+
+            this.columnCount = columns;
+            this.rowCount = rows;
+
+            for (i = 1; i <= columns; i++)
+            {
+                for (j = 1; j <= rows; j++)
+                {
+                    this.cells[i, j] = new SpreadsheetCell(i, j);
+                }
+            }
         }
 
         /// <summary>
@@ -50,7 +63,7 @@
         /// <returns>The cell object at given index</returns>
         public Cell GetCell(int column, int row)
         {
-            return null;
+            return this.cells[column, row];
         }
     }
 }

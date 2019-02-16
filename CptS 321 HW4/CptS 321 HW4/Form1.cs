@@ -22,6 +22,8 @@
         /// </summary>
         public Form1()
         {
+            Sheet spreadsheet;
+
             char letter = 'A';
 
             this.InitializeComponent();
@@ -45,6 +47,10 @@
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
     }

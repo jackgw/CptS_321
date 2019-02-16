@@ -1,15 +1,57 @@
-﻿namespace CptS321
+﻿namespace CptS_321_HW4
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Abstract class representing a single spreadsheet cell
+    /// the 'Absract Product' creating the framework of a cell
     /// </summary>
-    public abstract class Cell
+    public abstract class Cell : INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Event signifying the changing of a cell text
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Gets the column index of the cell
+        /// </summary>
+        public abstract int ColumnIndex { get; }
+
+        /// <summary>
+        /// Gets the row index of the cell
+        /// </summary>
+        public abstract int RowIndex { get; }
+
+        /// <summary>
+        /// Gets or sets the text contained in the cell
+        /// If the text is changed, then fire property changed event
+        /// </summary>
+        public abstract string Text { get; set; }
+
+        /// <summary>
+        /// Gets the value of the cell
+        /// </summary>
+        public abstract string Value { get; }
+
+        /// <summary>
+        /// Executes the propertyChanged event.
+        /// </summary>
+        /// <param name="name">Type of property changed</param>
+        public void OnPropertyChanged(string name)
+        {
+            this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+    }
+
+    /// <summary>
+    /// 'Concrete Product' implementation of the Cell class
+    /// </summary>
+    internal class SpreadsheetCell : Cell
     {
         private int columnIndex;
         private int rowIndex;
@@ -17,17 +59,20 @@
         private string value;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Cell"/> class.
+        /// Initializes a new instance of the <see cref="SpreadsheetCell"/> class.
         /// </summary>
-        public Cell()
+        /// <param name="columnNum">Column the cell is in</param>
+        /// <param name="rowNum">Row the cell is in</param>
+        public SpreadsheetCell(int columnNum, int rowNum)
         {
-            // Initialize cell
+            this.columnIndex = columnNum;
+            this.rowIndex = rowNum;
         }
 
         /// <summary>
         /// Gets the column index of the cell
         /// </summary>
-        public int ColumnIndex
+        public override int ColumnIndex
         {
             get { return this.columnIndex; }
         }
@@ -35,7 +80,7 @@
         /// <summary>
         /// Gets the row index of the cell
         /// </summary>
-        public int RowIndex
+        public override int RowIndex
         {
             get { return this.rowIndex; }
         }
@@ -44,16 +89,31 @@
         /// Gets or sets the text contained in the cell
         /// If the text is changed, then fire property changed event
         /// </summary>
-        public string Text
+        public override string Text
         {
-            get { return this.text; }
-            set { /* if text changed to a different value, fire property changed event */ }
+            get
+            {
+                return this.text;
+            }
+
+            set
+            {
+                if (value == this.text)
+                {
+                    return;
+                }
+                else
+                {
+                    this.text = value;
+                    this.OnPropertyChanged(this.text);
+                }
+            }
         }
 
         /// <summary>
         /// Gets the value of the cell
         /// </summary>
-        public string Value
+        public override string Value
         {
             get { return this.value; }
 
