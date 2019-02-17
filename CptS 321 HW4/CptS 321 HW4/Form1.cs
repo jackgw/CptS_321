@@ -26,8 +26,7 @@
         public Form1()
         {
             char letter = 'A';
-
-            this.spreadsheet.CellPropertyChanged += this.SheetEventHandler;
+            this.spreadsheet.CellPropertyChanged += new PropertyChangedEventHandler(this.SheetEventHandler);
 
             this.InitializeComponent();
 
@@ -59,7 +58,17 @@
 
         private void SheetEventHandler(object sender, PropertyChangedEventArgs e)
         {
-            dataGridView1.Rows[1].Cells[1].Value = e;
+            switch (e.PropertyName)
+            {
+                case "text":
+                    this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Value = ((Cell)sender).Value;
+                    break;
+                case "value":
+                    this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Value = ((Cell)sender).Value;
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>

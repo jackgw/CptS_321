@@ -66,7 +66,6 @@
     /// </summary>
     internal class SpreadsheetCell : Cell
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SpreadsheetCell"/> class.
         /// </summary>

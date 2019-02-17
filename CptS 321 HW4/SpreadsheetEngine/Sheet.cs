@@ -36,9 +36,6 @@
                 for (j = 0; j < rows; j++)
                 {
                     this.cells[i, j] = new SpreadsheetCell(i, j);
-
-                    /* Subscribe to cell property changed event */
-                    this.cells[i, j].PropertyChanged += this.CellPropertyChanged;
                 }
             }
         }
@@ -73,6 +70,9 @@
         /// <returns>True if cell found, false otherwise</returns>
         public bool ChangeText(int rowIndex, int colIndex, string newText)
         {
+            /* Subscribe to cell property changed event */
+            this.cells[colIndex, rowIndex].PropertyChanged += this.CellPropertyChanged;
+
             if (this.cells[colIndex, rowIndex] != null)
             {
                 this.cells[colIndex, rowIndex].Text = newText;
@@ -96,7 +96,7 @@
             {
                 /* Set value equal to another cell's value */
                 int colNum = targetCell.Text[1] - 65;       // convert ascii to index
-                int rowNum = targetCell.Text[2] - 48;
+                int rowNum = int.Parse(targetCell.Text.Substring(2, targetCell.Text.Length - 2)) - 1;   // Only villans do this
                 targetCell.ValueSet = this.cells[colNum, rowNum].Value;
             }
             else
