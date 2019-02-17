@@ -89,14 +89,14 @@
         /// Checks the text of a cell to determine what to change the value to, and changes it
         /// </summary>
         /// <param name="targetCell">Cell to be changed</param>
-        public void ChangeValue(Cell targetCell)
+        private void ChangeValue(Cell targetCell)
         {
             /* Conversion Required */
             if (targetCell.Text[0] == '=')
             {
                 /* Set value equal to another cell's value */
                 int colNum = targetCell.Text[1] - 65;       // convert ascii to index
-                int rowNum = targetCell.Text[2] - 1;
+                int rowNum = targetCell.Text[2] - 48;
                 targetCell.ValueSet = this.cells[colNum, rowNum].Value;
             }
             else
@@ -118,7 +118,6 @@
 
         public void OnCellPropertyChanged()
         {
-
         }
     }
 }

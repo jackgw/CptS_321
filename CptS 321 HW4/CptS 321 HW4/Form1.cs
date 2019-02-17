@@ -16,6 +16,8 @@
     /// </summary>
     public partial class Form1 : Form
     {
+        public Sheet spreadsheet = new Sheet(26, 50);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
         /// Resizes the Window to 800x600
@@ -23,9 +25,9 @@
         /// </summary>
         public Form1()
         {
-            Sheet spreadsheet = new Sheet(26, 50);
-
             char letter = 'A';
+
+            this.spreadsheet.CellPropertyChanged += this.SheetEventHandler;
 
             this.InitializeComponent();
 
@@ -55,6 +57,11 @@
         {
         }
 
+        private void SheetEventHandler(object sender, PropertyChangedEventArgs e)
+        {
+            dataGridView1.Rows[1].Cells[1].Value = e;
+        }
+
         /// <summary>
         /// Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
         /// </summary>
@@ -77,6 +84,30 @@
             testSheet.ChangeText(1, 15, "cell b15 text"); // cell B 15
             testSheet.ChangeText(2, 5, "=B15"); // set cell C 5 to the value of cell B 15
             StringAssert.AreEqualIgnoringCase(testSheet.GetCell(1, 15).Text, testSheet.GetCell(2, 5).Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /* DEMO */
+            int i;
+            int col, row;
+            Random rand = new Random();
+            for (i = 0; i < 50; i++)
+            {
+                col = rand.Next(0, 25);
+                row = rand.Next(0, 49);
+                this.spreadsheet.ChangeText(row, col, "Hello World!");
+            }
+
+            for (i = 0; i < 50; i++)
+            {
+                this.spreadsheet.ChangeText(i, 1, "This is cell B" + (i + 1).ToString());
+            }
+
+            for (i = 0; i < 50; i++)
+            {
+                this.spreadsheet.ChangeText(i, 0, "=B" + (i + 1).ToString());
+            }
         }
     }
 }

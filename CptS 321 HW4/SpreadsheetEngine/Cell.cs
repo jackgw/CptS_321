@@ -12,6 +12,11 @@
     /// </summary>
     public abstract class Cell : INotifyPropertyChanged
     {
+        protected int columnIndex;
+        protected int rowIndex;
+        protected string text;
+        protected string value;
+
         /// <summary>
         /// Event signifying the changing of a cell text
         /// </summary>
@@ -47,12 +52,11 @@
         /// Executes the propertyChanged event.
         /// </summary>
         /// <param name="name">Type of property changed</param>
-        public void OnPropertyChanged(string name)
+        protected virtual void OnPropertyChanged(string name)
         {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
-            if (handler != null)
+            if (this.PropertyChanged != null)
             {
-                handler(this, new PropertyChangedEventArgs(name));
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
     }
@@ -62,10 +66,6 @@
     /// </summary>
     internal class SpreadsheetCell : Cell
     {
-        private int columnIndex;
-        private int rowIndex;
-        private string text;
-        private string value;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpreadsheetCell"/> class.
@@ -116,7 +116,7 @@
                 else
                 {
                     this.text = value;
-                    this.OnPropertyChanged(this.text);
+                    this.OnPropertyChanged("text");
                 }
             }
         }
@@ -136,7 +136,23 @@
         /// </summary>
         internal override string ValueSet
         {
-            set { this.value = value; }
+            set
+            {
+                if (value == this.value)
+                {
+                    return;
+                }
+                else
+                {
+                    this.value = value;
+                    this.OnPropertyChanged("value");
+                }
+            }
+        }
+
+        protected override void OnPropertyChanged(string name)
+        {
+            base.OnPropertyChanged(name);
         }
     }
 }
