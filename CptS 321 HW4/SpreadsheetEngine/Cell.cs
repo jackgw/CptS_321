@@ -39,6 +39,11 @@
         public abstract string Value { get; }
 
         /// <summary>
+        /// Sets the value variable. Only visable to Sheet class.
+        /// </summary>
+        internal abstract string ValueSet { set; }
+
+        /// <summary>
         /// Executes the propertyChanged event.
         /// </summary>
         /// <param name="name">Type of property changed</param>
@@ -67,6 +72,8 @@
         {
             this.columnIndex = columnNum;
             this.rowIndex = rowNum;
+            this.text = string.Empty;
+            this.value = string.Empty;
         }
 
         /// <summary>
@@ -118,6 +125,14 @@
             get { return this.value; }
 
             // only spreadsheet should be allowed to change this value
+        }
+
+        /// <summary>
+        /// Sets the value variable. Only visable to Sheet class.
+        /// </summary>
+        internal override string ValueSet
+        {
+            set { this.value = value; }
         }
     }
 }

@@ -9,6 +9,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
+    using NUnit.Framework;
 
     /// <summary>
     /// Form class managing the winForms window
@@ -22,7 +23,7 @@
         /// </summary>
         public Form1()
         {
-            Sheet spreadsheet;
+            Sheet spreadsheet = new Sheet(26, 50);
 
             char letter = 'A';
 
@@ -52,6 +53,30 @@
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        /// <summary>
+        /// Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
+        /// </summary>
+        [Test]
+        public void CellTextChangedTest()
+        {
+            Sheet testSheet = new Sheet(26, 50);
+            testSheet.ChangeText(5, 5, "Test String");
+            Cell testCell = testSheet.GetCell(5, 5);
+            StringAssert.AreEqualIgnoringCase("Test String", testCell.Text);
+        }
+
+        /// <summary>
+        /// Creates a test Sheet class, and tests whether entering '=B15' as the text of a cell changes the text to that of B15
+        /// </summary>
+        [Test]
+        public void ValueCalculatedTest()
+        {
+            Sheet testSheet = new Sheet(26, 50);
+            testSheet.ChangeText(1, 15, "cell b15 text"); // cell B 15
+            testSheet.ChangeText(2, 5, "=B15"); // set cell C 5 to the value of cell B 15
+            StringAssert.AreEqualIgnoringCase(testSheet.GetCell(1, 15).Text, testSheet.GetCell(2, 5).Text);
         }
     }
 }
