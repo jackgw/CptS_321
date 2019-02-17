@@ -31,9 +31,9 @@
             this.columnCount = columns;
             this.rowCount = rows;
 
-            for (i = 1; i <= columns; i++)
+            for (i = 0; i < columns; i++)
             {
-                for (j = 1; j <= rows; j++)
+                for (j = 0; j < rows; j++)
                 {
                     this.cells[i, j] = new SpreadsheetCell(i, j);
 
@@ -76,6 +76,7 @@
             if (this.cells[colIndex, rowIndex] != null)
             {
                 this.cells[colIndex, rowIndex].Text = newText;
+                this.ChangeValue(this.cells[colIndex, rowIndex]);
                 return true;
             }
             else

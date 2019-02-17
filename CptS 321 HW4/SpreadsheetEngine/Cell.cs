@@ -49,7 +49,11 @@
         /// <param name="name">Type of property changed</param>
         public void OnPropertyChanged(string name)
         {
-            this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 
