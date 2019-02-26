@@ -10,7 +10,7 @@
     ///  Implements an arithmetic expression parser that builds a tree for a given expression.
     ///  The tree is then used for evaluation of the expression.
     /// </summary>
-    class ExpressionTree
+    public class ExpressionTree
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionTree"/> class.
@@ -27,7 +27,8 @@
         /// </summary>
         /// <param name="variableName">Name of target variable</param>
         /// <param name="variableValue">Desired variable value</param>
-        public void SetVariable(string variableName, double variableValue)        {
+        public void SetVariable(string variableName, double variableValue)
+        {
 
         }
 
@@ -35,8 +36,9 @@
         /// Evaluates the tree expression to a double value.
         /// </summary>
         /// <returns>Value of the expression</returns>
-        public double Evaluate()        {
-
+        public double Evaluate()
+        {
+            return 0;
         }
     }
 }
