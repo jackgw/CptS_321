@@ -9,8 +9,18 @@
     /// <summary>
     /// Expression tree node representing a variable
     /// </summary>
-    class VariableNode : BaseNode
+    internal class VariableNode : BaseNode
     {
+        public VariableNode(string newName)
+        {
+            this.Name = newName;
+        }
+
         public string Name { get; set; }
+
+        public override double Evaluate()
+        {
+            return ;
+        }
     }
 }

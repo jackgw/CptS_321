@@ -1,4 +1,4 @@
-﻿namespace ExpressionTreeApp
+﻿namespace CptS321
 {
     using System;
     using System.Collections.Generic;
@@ -24,6 +24,8 @@
             /* Get expression */
             Console.WriteLine("Enter an expression: ");
             expression = Console.ReadLine();
+
+            ExpressionTree appExpressionTree = new ExpressionTree(expression);
 
             /* Command Prompt Loop */
             do

@@ -11,5 +11,6 @@
     /// </summary>
     internal abstract class BaseNode
     {
+        public abstract double Evaluate();
     }
 }

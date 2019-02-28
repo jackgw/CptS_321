@@ -9,13 +9,9 @@
     /// <summary>
     /// Expression tree node representing an operator
     /// </summary>
-    class OperatorNode : BaseNode
+    internal abstract class BaseOperatorNode : BaseNode
     {
-        public OperatorNode(char c)
-        {
-            this.Operator = c;
-            this.Left = this.Right = null;
-        }
+        
 
         public char Operator { get; set; }
 
