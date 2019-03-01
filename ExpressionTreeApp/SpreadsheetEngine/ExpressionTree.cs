@@ -1,4 +1,11 @@
-﻿namespace CptS321
+﻿// <copyright file="ExpressionTree.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+// Jack Wharton
+// 11506329
+// CptS 321
+
+namespace CptS321
 {
     using System;
     using System.Collections.Generic;
@@ -24,6 +31,38 @@
         public ExpressionTree(string expression)
         {
             this.root = this.CreateTree(expression);
+        }
+
+        /// <summary>
+        /// Checks if the variables dictionary contains the given key. For external use
+        /// </summary>
+        /// <param name="variableName">Dictionary of variables and values</param>
+        /// <returns>True if variable is in the dictionary, false otherwise</returns>
+        public bool ContainsVariable(string variableName)
+        {
+            return this.variables.ContainsKey(variableName);
+        }
+
+        /// <summary>
+        /// Sets the specified variable within the ExpressionTree variables dictionary.
+        /// </summary>
+        /// <param name="variableName">Name of target variable</param>
+        /// <param name="variableValue">Desired variable value</param>
+        public void SetVariable(string variableName, double variableValue)
+        {
+            if (this.variables.ContainsKey(variableName))
+            {
+                this.variables[variableName] = variableValue;
+            }
+        }
+
+        /// <summary>
+        /// Evaluates the tree expression to a double value.
+        /// </summary>
+        /// <returns>Value of the expression</returns>
+        public double Evaluate()
+        {
+            return this.root.Evaluate(ref this.variables);
         }
 
         /// <summary>
@@ -66,6 +105,7 @@
 
         /// <summary>
         /// Converts a string expression in infix notation (a+b) to prefix notation (ab+)
+        /// Does not consider Operator Precedence or the inclusion of parentheses
         /// </summary>
         /// <param name="expression">Expression in infix notation</param>
         /// <returns>Expression in postfix notation</returns>
@@ -124,6 +164,11 @@
             return postfixResult;
         }
 
+        /// <summary>
+        /// Deternimes the type of node based on the input string and creates a corresponding node subclass
+        /// </summary>
+        /// <param name="name">Node name as given in expression</param>
+        /// <returns>A node containing the name and corresponding to the corrext type</returns>
         private BaseNode CreateNode(string name)
         {
             int value = 0;
@@ -150,33 +195,6 @@
                 /* Variable Node */
                 return new VariableNode(name);
             }
-        }
-
-        public bool ContainsVariable(string variableName)
-        {
-            return this.variables.ContainsKey(variableName);
-        }
-
-        /// <summary>
-        /// Sets the specified variable within the ExpressionTree variables dictionary.
-        /// </summary>
-        /// <param name="variableName">Name of target variable</param>
-        /// <param name="variableValue">Desired variable value</param>
-        public void SetVariable(string variableName, double variableValue)
-        {
-            if (this.variables.ContainsKey(variableName))
-            {
-                this.variables[variableName] = variableValue;
-            }
-        }
-
-        /// <summary>
-        /// Evaluates the tree expression to a double value.
-        /// </summary>
-        /// <returns>Value of the expression</returns>
-        public double Evaluate()
-        {
-            return this.root.Evaluate(ref this.variables);
         }
     }
 }

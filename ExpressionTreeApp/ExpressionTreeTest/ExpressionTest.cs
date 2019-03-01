@@ -1,10 +1,23 @@
-﻿namespace CptS321
+﻿// <copyright file="ExpressionTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+// Jack Wharton
+// 11506329
+// CptS 321
+
+namespace CptS321
 {
     using System;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Test class for Expression Tree
+    /// </summary>
     public class ExpressionTest
     {
+        /// <summary>
+        /// Scenario testing the addition operator
+        /// </summary>
         [Test]
         public void PlusEvaluationTest()
         {
@@ -19,6 +32,9 @@
             Assert.AreEqual(appExpressionTree.Evaluate(), 93.0);
         }
 
+        /// <summary>
+        /// Scenario testing the subtraction operator
+        /// </summary>
         [Test]
         public void MinusEvaluationTest()
         {
@@ -33,6 +49,9 @@
             Assert.AreEqual(appExpressionTree.Evaluate(), -82.0);
         }
 
+        /// <summary>
+        /// Scenario testing the multiplication operator
+        /// </summary>
         [Test]
         public void MultiplyEvaluationTest()
         {
@@ -45,6 +64,9 @@
             Assert.AreEqual(appExpressionTree.Evaluate(), 100);
         }
 
+        /// <summary>
+        /// Scenario testing the division operator
+        /// </summary>
         [Test]
         public void DivideEvaluationTest()
         {
