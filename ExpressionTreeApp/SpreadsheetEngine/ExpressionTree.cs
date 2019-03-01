@@ -23,7 +23,7 @@
         /// <param name="expression">Expression to be parsed</param>
         public ExpressionTree(string expression)
         {
-
+            
         }
 
         /// <summary>
@@ -143,7 +143,10 @@
         /// <param name="variableValue">Desired variable value</param>
         public void SetVariable(string variableName, double variableValue)
         {
-
+            if (this.variables.ContainsKey(variableName))
+            {
+                this.variables[variableName] = variableValue;
+            }
         }
 
         /// <summary>
@@ -152,7 +155,7 @@
         /// <returns>Value of the expression</returns>
         public double Evaluate()
         {
-            return 0;
+            return this.root.Evaluate(ref this.variables);
         }
     }
 }

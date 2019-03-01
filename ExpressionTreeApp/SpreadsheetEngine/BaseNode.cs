@@ -11,6 +11,6 @@
     /// </summary>
     internal abstract class BaseNode
     {
-        public abstract double Evaluate();
+        public abstract double Evaluate(ref Dictionary<string, double> variables);
     }
 }

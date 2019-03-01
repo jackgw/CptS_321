@@ -14,9 +14,9 @@
             this.Left = this.Right = null;
         }
 
-        public override double Evaluate()
+        public override double Evaluate(ref Dictionary<string, double> variables)
         {
-            return this.Left.Evaluate() / this.Right.Evaluate();
+            return this.Left.Evaluate(ref variables) / this.Right.Evaluate(ref variables);
         }
     }
 }

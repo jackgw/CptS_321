@@ -11,8 +11,6 @@
     /// </summary>
     internal abstract class BaseOperatorNode : BaseNode
     {
-        
-
         public char Operator { get; set; }
 
         public BaseNode Left { get; set; }

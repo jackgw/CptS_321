@@ -22,7 +22,7 @@
 
         public double Value { get; set; }
 
-        public override double Evaluate()
+        public override double Evaluate(ref Dictionary<string, double> variables)
         {
             return this.Value;
         }
