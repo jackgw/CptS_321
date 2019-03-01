@@ -23,7 +23,7 @@
         /// <param name="expression">Expression to be parsed</param>
         public ExpressionTree(string expression)
         {
-            
+            this.root = this.CreateTree(expression);
         }
 
         /// <summary>
@@ -54,8 +54,8 @@
                     }
                     else
                     {
-                        ((BaseOperatorNode)tempNode).Left = operandStack.Pop();
                         ((BaseOperatorNode)tempNode).Right = operandStack.Pop();
+                        ((BaseOperatorNode)tempNode).Left = operandStack.Pop();
                         operandStack.Push(tempNode);
                     }
                 }
@@ -74,45 +74,61 @@
             List<BaseNode> postfixResult = new List<BaseNode>();
             Stack<BaseNode> operatorStack = new Stack<BaseNode>();
             int i = 0;
-            string tempName;
+            string tempName = string.Empty;
             BaseNode tempNode;
+
+            /* Check for a negative as the first symbol */
+            if (expression[i] == '-')
+            {
+                tempName += '-';
+                i++;
+            }
 
             /* Separate expression into constant nodes, variable nodes, and operatornodes */
             while (i < expression.Length)
             {
-                tempName = string.Empty;
-                while (i < expression.Length || !this.operatorFactory.IsOperator(expression[i]))
+                while (i < expression.Length && !this.operatorFactory.IsOperator(expression[i]))
                 {
                     tempName += expression[i];
                     i++;
                 }
 
-                if (i < expression.Length)
+                tempNode = this.CreateNode(tempName);
+                if (tempNode is VariableNode || tempNode is ConstantNode)
                 {
-                    tempNode = this.CreateNode(tempName);
-                    if (tempNode is VariableNode || tempNode is ConstantNode)
+                    postfixResult.Add(tempNode);
+                    if (i < expression.Length)
                     {
-                        postfixResult.Add(tempNode);
+                        tempName = expression[i].ToString();    // next operator
+                    }
+                }
+                else if (tempNode is BaseOperatorNode)
+                {
+                    while (operatorStack.Count > 0)
+                    {
+                        postfixResult.Add(operatorStack.Pop());
                     }
 
-                    if (tempNode is BaseOperatorNode)
+                    operatorStack.Push(tempNode);
+                    tempName = string.Empty;                // reset temp string
+                    i++;
+                    if (expression[i] == '-')
                     {
-                        while (operatorStack.Count > 0)
-                        {
-                            postfixResult.Add(operatorStack.Pop());
-                        }
-
-                        //operatorStack.Push();
+                        tempName += '-';                   // check for a negative following an operator
+                        i++;
                     }
                 }
             }
+
+            postfixResult.Add(operatorStack.Pop());
+            return postfixResult;
         }
 
         private BaseNode CreateNode(string name)
         {
             int value = 0;
 
-            if (name[0] >= 48 && name[0] <= 57)
+            if ((name[0] >= 48 && name[0] <= 57) || (name.Length > 1 && name[0] == '-'))
             {
                 /* First character is a number: Constant Node */
                 if (int.TryParse(name, out value))
@@ -134,6 +150,11 @@
                 /* Variable Node */
                 return new VariableNode(name);
             }
+        }
+
+        public bool ContainsVariable(string variableName)
+        {
+            return this.variables.ContainsKey(variableName);
         }
 
         /// <summary>

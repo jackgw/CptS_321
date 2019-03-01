@@ -20,9 +20,11 @@
         {
             string expression = string.Empty;
             int selection = 0;
+            string variableName;
+            double variableValue;
 
             /* Get expression */
-            Console.WriteLine("Enter an expression: ");
+            Console.Write("Enter an expression: ");
             expression = Console.ReadLine();
 
             ExpressionTree appExpressionTree = new ExpressionTree(expression);
@@ -30,15 +32,28 @@
             /* Command Prompt Loop */
             do
             {
+                Console.WriteLine("Expression: " + expression);
                 Console.WriteLine("Choose an option: \n1. Set Variable Value\n2. Evaluate\n3. Exit");
                 selection = int.Parse(Console.ReadLine());
                 switch (selection)
                 {
                     case 1:
-                        // prompt for name and value, and change
+                        Console.Write("Enter variable name: ");
+                        variableName = Console.ReadLine();
+                        if (appExpressionTree.ContainsVariable(variableName))
+                        {
+                            Console.Write("Variable found. Enter variable value: ");
+                            variableValue = int.Parse(Console.ReadLine());
+                            appExpressionTree.SetVariable(variableName, variableValue);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Variable not found.");
+                        }
+
                         break;
                     case 2:
-                        // evaluate
+                        Console.WriteLine("Expression Tree Value: " + appExpressionTree.Evaluate());
                         break;
                     case 3:
                         Console.WriteLine("Exiting...\n");
