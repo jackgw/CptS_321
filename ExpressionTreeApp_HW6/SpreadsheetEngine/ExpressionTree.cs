@@ -132,30 +132,56 @@ namespace CptS321
                     tempName += expression[i];
                     i++;
                 }
-
-                tempNode = this.CreateNode(tempName);
-                if (tempNode is VariableNode || tempNode is ConstantNode)
+                
+                if (tempName == string.Empty)
                 {
-                    postfixResult.Add(tempNode);
                     if (i < expression.Length)
                     {
                         tempName = expression[i].ToString();    // next operator
                     }
                 }
+
+                tempNode = this.CreateNode(tempName);
+                if (tempNode is VariableNode || tempNode is ConstantNode)
+                {
+                    postfixResult.Add(tempNode);
+                    tempName = string.Empty;
+                }
                 else if (tempNode is BaseOperatorNode)
                 {
-                    while (operatorStack.Count > 0 && ((BaseOperatorNode)tempNode).Precedence <= ((BaseOperatorNode)operatorStack.Peek()).Precedence)
+                    if (tempNode is OpenParenthesesOperatorNode)
                     {
-                        postfixResult.Add(operatorStack.Pop());
-                    }
-
-                    operatorStack.Push(tempNode);
-                    tempName = string.Empty;                // reset temp string
-                    i++;
-                    if (expression[i] == '-')
-                    {
-                        tempName += '-';                   // check for a negative following an operator
+                        operatorStack.Push(tempNode);
+                        tempName = string.Empty;                // reset temp string
                         i++;
+                    }
+                    else if (tempNode is CloseParenthesesOperatorNode)
+                    {
+                        while (!(operatorStack.Peek() is OpenParenthesesOperatorNode))
+                        {
+                            postfixResult.Add(operatorStack.Pop());
+                        }
+
+                        operatorStack.Pop();
+                        tempName = string.Empty;                // reset temp string
+                        i++;
+                    }
+                    else
+                    {
+                        while (operatorStack.Count > 0 && ((BaseOperatorNode)tempNode).Precedence <= ((BaseOperatorNode)operatorStack.Peek()).Precedence)
+                        {
+                            postfixResult.Add(operatorStack.Pop());
+                        }
+
+                        operatorStack.Push(tempNode);
+                        tempName = string.Empty;                // reset temp string
+                        i++;
+
+                        if (expression[i] == '-')
+                        {
+                            tempName += '-';                   // check for a negative following an operator
+                            i++;
+                        }
                     }
                 }
             }

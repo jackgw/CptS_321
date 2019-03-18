@@ -1,4 +1,4 @@
-﻿// <copyright file="DivideOperatorNode.cs" company="PlaceholderCompany">
+﻿// <copyright file="CloseParenthesesOperatorNode.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // Jack Wharton
@@ -14,19 +14,19 @@ namespace CptS321
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Operator node implementing division functionality
+    /// Operator node to represent open parentheses. For use in building tree but not to be evaluated
     /// </summary>
-    internal class DivideOperatorNode : BaseOperatorNode
+    internal class CloseParenthesesOperatorNode : BaseOperatorNode
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DivideOperatorNode"/> class.
+        /// Initializes a new instance of the <see cref="OpenParenthesesOperatorNode"/> class.
         /// </summary>
         /// <param name="c">operator symbol</param>
-        public DivideOperatorNode(char c)
+        public CloseParenthesesOperatorNode(char c)
         {
             this.Operator = c;
             this.Left = this.Right = null;
-            this.precedence = 2;
+            this.precedence = 0;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace CptS321
         /// <returns>Value of node including all descendant nodes</returns>
         public override double Evaluate(ref Dictionary<string, double> variables)
         {
-            return this.Left.Evaluate(ref variables) / this.Right.Evaluate(ref variables);
+            throw new System.InvalidOperationException("Cannot evaluate paretheses");
         }
     }
 }

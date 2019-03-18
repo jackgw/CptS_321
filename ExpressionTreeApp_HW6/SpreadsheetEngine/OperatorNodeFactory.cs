@@ -18,7 +18,7 @@ namespace CptS321
     /// </summary>
     internal class OperatorNodeFactory
     {
-        private char[] supportedOperators = { '+', '-', '*', '/', ')'};
+        private char[] supportedOperators = { '+', '-', '*', '/', '(', ')'};
 
         /// <summary>
         /// Creates an operator node based on a given operator symbol
@@ -37,6 +37,10 @@ namespace CptS321
                     return new MultiplyOperatorNode(op);
                 case '/':
                     return new DivideOperatorNode(op);
+                case '(':
+                    return new OpenParenthesesOperatorNode(op);
+                case ')':
+                    return new CloseParenthesesOperatorNode(op);
                 default:
                     return null;
             }
