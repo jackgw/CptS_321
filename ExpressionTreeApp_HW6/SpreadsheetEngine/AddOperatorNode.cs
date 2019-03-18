@@ -27,6 +27,7 @@ namespace CptS321
         {
             this.Operator = c;
             this.Left = this.Right = null;
+            this.precedence = 1;
         }
 
         /// <summary>

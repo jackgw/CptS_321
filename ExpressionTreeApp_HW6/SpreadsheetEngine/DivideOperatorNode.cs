@@ -6,14 +6,27 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Operator node implementing division functionality
+    /// </summary>
     class DivideOperatorNode : BaseOperatorNode
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DivideOperatorNode"/> class.
+        /// </summary>
+        /// <param name="c">operator symbol</param>
         public DivideOperatorNode(char c)
         {
             this.Operator = c;
             this.Left = this.Right = null;
+            this.precedence = 2;
         }
 
+        /// <summary>
+        /// Evaluates the value of the node
+        /// </summary>
+        /// <param name="variables">Variables dictionary</param>
+        /// <returns>Value of node including all descendant nodes</returns>
         public override double Evaluate(ref Dictionary<string, double> variables)
         {
             return this.Left.Evaluate(ref variables) / this.Right.Evaluate(ref variables);

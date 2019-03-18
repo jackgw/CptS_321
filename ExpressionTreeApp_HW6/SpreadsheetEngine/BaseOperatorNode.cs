@@ -19,6 +19,12 @@ namespace CptS321
     internal abstract class BaseOperatorNode : BaseNode
     {
         /// <summary>
+        /// Precedence for the operator
+        /// Not able to be set outside of the engine project
+        /// </summary>
+        internal int precedence;
+
+        /// <summary>
         /// Gets or sets the operator property
         /// </summary>
         public char Operator { get; set; }
@@ -32,5 +38,13 @@ namespace CptS321
         /// Gets or sets the right node property
         /// </summary>
         public BaseNode Right { get; set; }
+
+        /// <summary>
+        /// Gets the precedence value of the operator
+        /// </summary>
+        public int Precedence
+        {
+            get { return this.precedence; }
+        }
     }
 }

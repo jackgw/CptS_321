@@ -144,7 +144,7 @@ namespace CptS321
                 }
                 else if (tempNode is BaseOperatorNode)
                 {
-                    while (operatorStack.Count > 0)
+                    while (operatorStack.Count > 0 && ((BaseOperatorNode)tempNode).Precedence <= ((BaseOperatorNode)operatorStack.Peek()).Precedence)
                     {
                         postfixResult.Add(operatorStack.Pop());
                     }
@@ -160,7 +160,11 @@ namespace CptS321
                 }
             }
 
-            postfixResult.Add(operatorStack.Pop());
+            while (operatorStack.Count > 0)
+            {
+                postfixResult.Add(operatorStack.Pop());
+            }
+
             return postfixResult;
         }
 
