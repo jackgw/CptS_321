@@ -39,8 +39,9 @@ namespace CptS321
             /* Command Prompt Loop */
             do
             {
-                Console.WriteLine("Expression: " + expression);
-                Console.WriteLine("Choose an option: \n1. Set Variable Value\n2. Evaluate\n3. Exit");
+                Console.WriteLine("\nExpression: " + expression);
+                Console.WriteLine("=====================\n1. Set Variable Value\n2. Evaluate\n3. New Expression\n4. Exit\n=====================");
+                Console.Write("Choose an option: ");
                 selection = int.Parse(Console.ReadLine());
                 switch (selection)
                 {
@@ -63,6 +64,11 @@ namespace CptS321
                         Console.WriteLine("Expression Tree Value: " + appExpressionTree.Evaluate());
                         break;
                     case 3:
+                        Console.Write("Enter new expression: ");
+                        expression = Console.ReadLine();
+                        appExpressionTree = new ExpressionTree(expression);
+                        break;
+                    case 4:
                         Console.WriteLine("Exiting...\n");
                         break;
                     default:
@@ -70,7 +76,7 @@ namespace CptS321
                         break;
                 }
             }
-            while (selection != 3);
+            while (selection != 4);
         }
     }
 }
