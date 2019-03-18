@@ -19,7 +19,7 @@ namespace CptS321
     internal class CloseParenthesesOperatorNode : BaseOperatorNode
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenParenthesesOperatorNode"/> class.
+        /// Initializes a new instance of the <see cref="CloseParenthesesOperatorNode"/> class.
         /// </summary>
         /// <param name="c">operator symbol</param>
         public CloseParenthesesOperatorNode(char c)

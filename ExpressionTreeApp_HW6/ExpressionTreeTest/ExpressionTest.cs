@@ -112,6 +112,8 @@ namespace CptS321
             Assert.AreEqual(appExpressionTree.Evaluate(), 1);
             appExpressionTree = new ExpressionTree("(6*2)/(4*3)");
             Assert.AreEqual(appExpressionTree.Evaluate(), 1);
+            appExpressionTree = new ExpressionTree("(4*(2+8))/2");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 20);
         }
     }
 }
