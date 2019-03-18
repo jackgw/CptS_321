@@ -77,5 +77,41 @@ namespace CptS321
             appExpressionTree.SetVariable("test", 0.5);
             Assert.AreEqual(appExpressionTree.Evaluate(), 2);
         }
+
+        /// <summary>
+        /// Scenarios testing combinations of the four types of operators supported: +, -, *, /
+        /// </summary>
+        [Test]
+        public void MultipleOperatorEvaluationTest()
+        {
+            ExpressionTree appExpressionTree = new ExpressionTree("2*50/25+15-10");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 9);
+            appExpressionTree = new ExpressionTree("100/50*25-15+10");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 45);
+        }
+
+        /// <summary>
+        /// Scenarios testing precedence of the four types of operators supported: +, -, *, /
+        /// </summary>
+        [Test]
+        public void OperatorPrecedenceEvaluationTest()
+        {
+            ExpressionTree appExpressionTree = new ExpressionTree("10+2*8+4");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 30);
+            appExpressionTree = new ExpressionTree("5-100/25");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 1);
+        }
+
+        /// <summary>
+        /// Scenarios testing correct use of parentheses
+        /// </summary>
+        [Test]
+        public void ParenthesesEvaluationTest()
+        {
+            ExpressionTree appExpressionTree = new ExpressionTree("2-(10-9)");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 1);
+            appExpressionTree = new ExpressionTree("(6*2)/(4*3)");
+            Assert.AreEqual(appExpressionTree.Evaluate(), 1);
+        }
     }
 }
