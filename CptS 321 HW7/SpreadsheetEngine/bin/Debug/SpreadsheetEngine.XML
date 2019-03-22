@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpreadsheetEngine</name>
+    </assembly>
+    <members>
+        <member name="T:CptS321.AddOperatorNode">
+            <summary>
+            Operator node with implementation for the Add operation
+            Derived from BaseOperatorNode
+            </summary>
+        </member>
+        <member name="M:CptS321.AddOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.AddOperatorNode"/> class.
+            </summary>
+        </member>
+        <member name="M:CptS321.AddOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the node value by adding the values of the left node and the right node
+            </summary>
+            <param name="variables">Variable dictionary</param>
+            <returns>Value of the node including all descendent nodes</returns>
+        </member>
+        <member name="T:CptS321.BaseNode">
+            <summary>
+            Abstract class representing a node of the Expression tree
+            </summary>
+        </member>
+        <member name="M:CptS321.BaseNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Abstract evaluate method.
+            Every subnode class must implement evaluation functionality
+            </summary>
+            <param name="variables">Variable dictionary</param>
+            <returns>Value of the node</returns>
+        </member>
+        <member name="T:CptS321.Cell">
+            <summary>
+            the 'Absract Product' creating the framework of a cell
+            </summary>
+        </member>
+        <member name="E:CptS321.Cell.PropertyChanged">
+            <summary>
+            Event signifying the changing of a cell text
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.ColumnIndex">
+            <summary>
+            Gets the column index of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.RowIndex">
+            <summary>
+            Gets the row index of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.Text">
+            <summary>
+            Gets or sets the text contained in the cell
+            If the text is changed, then fire property changed event
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.Value">
+            <summary>
+            Gets the value of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.ValueSet">
+            <summary>
+            Sets the value variable. Only visable to Sheet class.
+            </summary>
+        </member>
+        <member name="M:CptS321.Cell.OnPropertyChanged(System.String)">
+            <summary>
+            Executes the propertyChanged event.
+            </summary>
+            <param name="name">Type of property changed</param>
+        </member>
+        <member name="T:CptS321.SpreadsheetCell">
+            <summary>
+            'Concrete Product' implementation of the Cell class
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetCell.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.SpreadsheetCell"/> class.
+            </summary>
+            <param name="columnNum">Column the cell is in</param>
+            <param name="rowNum">Row the cell is in</param>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.ColumnIndex">
+            <summary>
+            Gets the column index of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.RowIndex">
+            <summary>
+            Gets the row index of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.Text">
+            <summary>
+            Gets or sets the text contained in the cell
+            If the text is changed, then fire property changed event
+            </summary>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.Value">
+            <summary>
+            Gets the value of the cell
+            </summary>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.ValueSet">
+            <summary>
+            Sets the value variable. Only visable to Sheet class.
+            </summary>
+        </member>
+        <member name="T:CptS321.CloseParenthesesOperatorNode">
+            <summary>
+            Operator node to represent open parentheses. For use in building tree but not to be evaluated
+            </summary>
+        </member>
+        <member name="M:CptS321.CloseParenthesesOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.CloseParenthesesOperatorNode"/> class.
+            </summary>
+        </member>
+        <member name="M:CptS321.CloseParenthesesOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the value of the node
+            </summary>
+            <param name="variables">Variables dictionary</param>
+            <returns>Value of node including all descendant nodes</returns>
+        </member>
+        <member name="T:CptS321.ConstantNode">
+            <summary>
+            Expression tree node representing a constant
+            </summary>
+        </member>
+        <member name="M:CptS321.ConstantNode.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.ConstantNode"/> class.
+            </summary>
+            <param name="value">Constant value of the node</param>
+        </member>
+        <member name="P:CptS321.ConstantNode.Value">
+            <summary>
+            Gets or sets the value property
+            </summary>
+        </member>
+        <member name="M:CptS321.ConstantNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Returns the value of the node
+            </summary>
+            <param name="variables">Variable dictionary</param>
+            <returns>Value of node</returns>
+        </member>
+        <member name="T:CptS321.DivideOperatorNode">
+            <summary>
+            Operator node implementing division functionality
+            </summary>
+        </member>
+        <member name="M:CptS321.DivideOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.DivideOperatorNode"/> class.
+            </summary>
+            <param name="c">operator symbol</param>
+        </member>
+        <member name="M:CptS321.DivideOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the value of the node
+            </summary>
+            <param name="variables">Variables dictionary</param>
+            <returns>Value of node including all descendant nodes</returns>
+        </member>
+        <member name="T:CptS321.ExpressionTree">
+            <summary>
+             Implements an arithmetic expression parser that builds a tree for a given expression.
+             The tree is then used for evaluation of the expression.
+            </summary>
+        </member>
+        <member name="M:CptS321.ExpressionTree.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.ExpressionTree"/> class.
+            Constructs the tree from a specific expression
+            </summary>
+            <param name="expression">Expression to be parsed</param>
+        </member>
+        <member name="M:CptS321.ExpressionTree.ContainsVariable(System.String)">
+            <summary>
+            Checks if the variables dictionary contains the given key. For external use
+            </summary>
+            <param name="variableName">Dictionary of variables and values</param>
+            <returns>True if variable is in the dictionary, false otherwise</returns>
+        </member>
+        <member name="M:CptS321.ExpressionTree.SetVariable(System.String,System.Double)">
+            <summary>
+            Sets the specified variable within the ExpressionTree variables dictionary.
+            </summary>
+            <param name="variableName">Name of target variable</param>
+            <param name="variableValue">Desired variable value</param>
+        </member>
+        <member name="M:CptS321.ExpressionTree.Evaluate">
+            <summary>
+            Evaluates the tree expression to a double value.
+            </summary>
+            <returns>Value of the expression</returns>
+        </member>
+        <member name="M:CptS321.ExpressionTree.CreateTree(System.String)">
+            <summary>
+            Constructs the tree from a specific expression
+            </summary>
+            <returns>The root node of the expression tree</returns>
+            <param name="expression">Expression to be parsed</param>
+        </member>
+        <member name="M:CptS321.ExpressionTree.InfixToPostfix(System.String)">
+            <summary>
+            Converts a string expression in infix notation (a+b) to prefix notation (ab+)
+            Does not consider Operator Precedence or the inclusion of parentheses
+            </summary>
+            <param name="expression">Expression in infix notation</param>
+            <returns>Expression in postfix notation</returns>
+        </member>
+        <member name="M:CptS321.ExpressionTree.CreateNode(System.String)">
+            <summary>
+            Deternimes the type of node based on the input string and creates a corresponding node subclass
+            </summary>
+            <param name="name">Node name as given in expression</param>
+            <returns>A node containing the name and corresponding to the corrext type</returns>
+        </member>
+        <member name="T:CptS321.BaseOperatorNode">
+            <summary>
+            Expression tree node representing an operator
+            </summary>
+        </member>
+        <member name="F:CptS321.BaseOperatorNode.precedence">
+            <summary>
+            Precedence for the operator
+            Not able to be set outside of the engine project
+            </summary>
+        </member>
+        <member name="P:CptS321.BaseOperatorNode.Operator">
+            <summary>
+            Gets or sets the operator property
+            </summary>
+        </member>
+        <member name="P:CptS321.BaseOperatorNode.Left">
+            <summary>
+            Gets or sets the left node property
+            </summary>
+        </member>
+        <member name="P:CptS321.BaseOperatorNode.Right">
+            <summary>
+            Gets or sets the right node property
+            </summary>
+        </member>
+        <member name="P:CptS321.BaseOperatorNode.Precedence">
+            <summary>
+            Gets the precedence value of the operator
+            </summary>
+        </member>
+        <member name="T:CptS321.MultiplyOperatorNode">
+            <summary>
+            Operator node implementing multiplication functionality
+            </summary>
+        </member>
+        <member name="M:CptS321.MultiplyOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.MultiplyOperatorNode"/> class.
+            </summary>
+            <param name="c">operator symbol</param>
+        </member>
+        <member name="M:CptS321.MultiplyOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the value of the node
+            </summary>
+            <param name="variables">Variables dictionary</param>
+            <returns>Value of node including all descendant nodes</returns>
+        </member>
+        <member name="T:CptS321.OpenParenthesesOperatorNode">
+            <summary>
+            Operator node to represent open parentheses. For use in building tree but not to be evaluated
+            </summary>
+        </member>
+        <member name="M:CptS321.OpenParenthesesOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.OpenParenthesesOperatorNode"/> class.
+            </summary>
+            <param name="c">operator symbol</param>
+        </member>
+        <member name="M:CptS321.OpenParenthesesOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the value of the node
+            </summary>
+            <param name="variables">Variables dictionary</param>
+            <returns>Value of node including all descendant nodes</returns>
+        </member>
+        <member name="T:CptS321.OperatorNodeFactory">
+            <summary>
+            Factory for creating operator nodes
+            </summary>
+        </member>
+        <member name="M:CptS321.OperatorNodeFactory.GetOperatorNode(System.Char)">
+            <summary>
+            Creates an operator node based on a given operator symbol
+            </summary>
+            <param name="op">Operator symbol</param>
+            <returns>Appropriate subnode corresponding to the operator</returns>
+        </member>
+        <member name="M:CptS321.OperatorNodeFactory.IsOperator(System.Char)">
+            <summary>
+            checks if element matches one of the supported operations
+            </summary>
+            <param name="op">Character to be checked</param>
+            <returns>True if character is a valid operator, false otherwise</returns>
+        </member>
+        <member name="T:CptS321.Sheet">
+            <summary>
+            Spreadsheet class
+            </summary>
+        </member>
+        <member name="M:CptS321.Sheet.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.Sheet"/> class.
+            Initializes a 2D array of Cells according to size parameters
+            </summary>
+            <param name="columns">Number of Columns</param>
+            <param name="rows">Number of Rows</param>
+        </member>
+        <member name="E:CptS321.Sheet.CellPropertyChanged">
+            <summary>
+            Property changed event handler for all cells in the spreadsheet
+            </summary>
+        </member>
+        <member name="P:CptS321.Sheet.ColumnCount">
+            <summary>
+            Gets the number of columns
+            </summary>
+        </member>
+        <member name="P:CptS321.Sheet.RowCount">
+            <summary>
+            Gets the number of rows
+            </summary>
+        </member>
+        <member name="M:CptS321.Sheet.ChangeText(System.Int32,System.Int32,System.String)">
+            <summary>
+            Changes text of a specified cell
+            </summary>
+            <param name="rowIndex">Row index</param>
+            <param name="colIndex">Column Index</param>
+            <param name="newText">New cell text</param>
+            <returns>True if cell found, false otherwise</returns>
+        </member>
+        <member name="M:CptS321.Sheet.ChangeValue(CptS321.Cell)">
+            <summary>
+            Checks the text of a cell to determine what to change the value to, and changes it
+            </summary>
+            <param name="targetCell">Cell to be changed</param>
+        </member>
+        <member name="M:CptS321.Sheet.GetCell(System.Int32,System.Int32)">
+            <summary>
+            Returns the cell at a certain row and column index
+            </summary>
+            <param name="column">Column index of desired cell</param>
+            <param name="row">Row index of desired cell</param>
+            <returns>The cell object at given index</returns>
+        </member>
+        <member name="T:CptS321.SubtractOperatorNode">
+            <summary>
+            Implementation for the subtraction (-) operator
+            </summary>
+        </member>
+        <member name="M:CptS321.SubtractOperatorNode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.SubtractOperatorNode"/> class.
+            </summary>
+            <param name="c">Operator symbol</param>
+        </member>
+        <member name="M:CptS321.SubtractOperatorNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the node value by subtracting the value of the left node from the right node
+            </summary>
+            <param name="variables">Variable dictionary</param>
+            <returns>Value of the node</returns>
+        </member>
+        <member name="T:CptS321.VariableNode">
+            <summary>
+            Expression tree node representing a variable
+            </summary>
+        </member>
+        <member name="M:CptS321.VariableNode.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.VariableNode"/> class.
+            </summary>
+            <param name="newName">Name of variable</param>
+        </member>
+        <member name="P:CptS321.VariableNode.Name">
+            <summary>
+            Gets or sets the name property
+            </summary>
+        </member>
+        <member name="M:CptS321.VariableNode.Evaluate(System.Collections.Generic.Dictionary{System.String,System.Double}@)">
+            <summary>
+            Evaluates the value of the node, using the variables dictionary parameter
+            </summary>
+            <param name="variables">Dictionary of variables and their corresponding values</param>
+            <returns>The value of the variable</returns>
+        </member>
+    </members>
+</doc>

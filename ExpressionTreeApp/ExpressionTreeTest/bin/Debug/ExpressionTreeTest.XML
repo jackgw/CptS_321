@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExpressionTreeTest</name>
+    </assembly>
+    <members>
+        <member name="T:CptS321.ExpressionTest">
+            <summary>
+            Test class for Expression Tree
+            </summary>
+        </member>
+        <member name="M:CptS321.ExpressionTest.PlusEvaluationTest">
+            <summary>
+            Scenario testing the addition operator
+            </summary>
+        </member>
+        <member name="M:CptS321.ExpressionTest.MinusEvaluationTest">
+            <summary>
+            Scenario testing the subtraction operator
+            </summary>
+        </member>
+        <member name="M:CptS321.ExpressionTest.MultiplyEvaluationTest">
+            <summary>
+            Scenario testing the multiplication operator
+            </summary>
+        </member>
+        <member name="M:CptS321.ExpressionTest.DivideEvaluationTest">
+            <summary>
+            Scenario testing the division operator
+            </summary>
+        </member>
+    </members>
+</doc>

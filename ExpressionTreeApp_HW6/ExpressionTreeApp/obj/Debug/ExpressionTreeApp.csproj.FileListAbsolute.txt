@@ -1,0 +1,24 @@
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.exe.config
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.XML
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.xml
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.csprojResolveAssemblyReference.cache
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.pdb
+C:\Users\jackg\Desktop\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.exe.config
+C:\Users\jackg\Desktop\ExpressionTreeApp\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.XML
+C:\Users\jackg\Desktop\ExpressionTreeApp\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.exe
+C:\Users\jackg\Desktop\ExpressionTreeApp\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.exe.config
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.XML
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\ExpressionTreeApp.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\bin\Debug\SpreadsheetEngine.xml
+C:\Users\jackg\Desktop\CptS 321\GitLab\ExpressionTreeApp_HW6\ExpressionTreeApp\obj\Debug\ExpressionTreeApp.csprojResolveAssemblyReference.cache

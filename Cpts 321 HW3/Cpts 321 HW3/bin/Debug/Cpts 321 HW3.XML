@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cpts 321 HW3</name>
+    </assembly>
+    <members>
+        <member name="T:Cpts_321_HW3.FibonacciTextReader">
+            <summary>
+            Class for loading fibonacci sequence
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cpts_321_HW3.FibonacciTextReader"/> class.
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cpts_321_HW3.FibonacciTextReader"/> class.
+            </summary>
+            <param name="maxLinesAvailable">The integer value of the max lines available for the file</param>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.ReadLine">
+            <summary>
+            Calculates the next number in the fibonacci sequence based on the value of this.lineNumber
+            </summary>
+            <returns>The next number in the fibonacci sequence as a string</returns>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.ReadToEnd">
+            <summary>
+            Calls ReadLine as many times as specified by this.maxLines, and concatenates results to a single string
+            </summary>
+            <returns>a string </returns>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.First10_FibonacciTest">
+            <summary>
+            Tests the ability of ReadLine to generate the first 10 elements of the fibonacci sequence
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.TotalLinesTest">
+            <summary>
+            Verifies that the number of fibonacci items returned by ReadToEnd matches the given max lines
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.FibonacciTextReader.ReadAllLinesTest">
+            <summary>
+            Tests the output of the ReadToEnd function when maxLines is set to 5
+            </summary>
+        </member>
+        <member name="T:Cpts_321_HW3.Menu">
+            <summary>
+            Primary form class, managing the window.
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.Menu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cpts_321_HW3.Menu"/> class.
+            </summary>
+        </member>
+        <member name="F:Cpts_321_HW3.Menu.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.Menu.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Cpts_321_HW3.Menu.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Cpts_321_HW3.Program">
+            <summary>
+            Program class launching main.
+            </summary>
+        </member>
+        <member name="M:Cpts_321_HW3.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Cpts_321_HW3.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Cpts_321_HW3.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Cpts_321_HW3.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

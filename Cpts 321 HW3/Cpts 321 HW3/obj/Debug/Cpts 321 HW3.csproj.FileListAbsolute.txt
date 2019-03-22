@@ -1,0 +1,13 @@
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\Cpts 321 HW3.exe.config
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\Cpts 321 HW3.XML
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\Cpts 321 HW3.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\Cpts 321 HW3.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\nunit.framework.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\nunit.framework.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\bin\Debug\nunit.framework.xml
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts_321_HW3.Menu.resources
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts_321_HW3.Properties.Resources.resources
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts 321 HW3.csproj.GenerateResource.Cache
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts 321 HW3.exe
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts 321 HW3.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\Cpts 321 HW3\Cpts 321 HW3\obj\Debug\Cpts 321 HW3.csprojResolveAssemblyReference.cache
