@@ -45,6 +45,11 @@
             Event signifying the changing of a cell text
             </summary>
         </member>
+        <member name="E:CptS321.Cell.DependancyChanged">
+            <summary>
+            subscribed via the sheet
+            </summary>
+        </member>
         <member name="P:CptS321.Cell.ColumnIndex">
             <summary>
             Gets the column index of the cell
@@ -227,6 +232,12 @@
             </summary>
             <param name="name">Node name as given in expression</param>
             <returns>A node containing the name and corresponding to the corrext type</returns>
+        </member>
+        <member name="M:CptS321.ExpressionTree.GetVariableNames">
+            <summary>
+            Gets a list of all the variables in the expression
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:CptS321.BaseOperatorNode">
             <summary>

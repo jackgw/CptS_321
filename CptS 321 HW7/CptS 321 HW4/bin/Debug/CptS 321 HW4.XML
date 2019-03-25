@@ -4,51 +4,51 @@
         <name>CptS 321 HW4</name>
     </assembly>
     <members>
-        <member name="T:CptS_321_HW4.Form1">
+        <member name="T:CptS321.Form1">
             <summary>
             Form class managing the winForms window
             </summary>
         </member>
-        <member name="M:CptS_321_HW4.Form1.#ctor">
+        <member name="M:CptS321.Form1.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:CptS_321_HW4.Form1"/> class.
+            Initializes a new instance of the <see cref="T:CptS321.Form1"/> class.
             Resizes the Window to 800x600
             Adds columns A-Z and rows 1-50 to the grid
             </summary>
         </member>
-        <member name="M:CptS_321_HW4.Form1.CellTextChangedTest">
+        <member name="M:CptS321.Form1.CellTextChangedTest">
             <summary>
             Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
             </summary>
         </member>
-        <member name="M:CptS_321_HW4.Form1.ValueCalculatedTest">
+        <member name="M:CptS321.Form1.ValueCalculatedTest">
             <summary>
             Creates a test Sheet class, and tests whether entering '=B15' as the text of a cell changes the text to that of B15
             </summary>
         </member>
-        <member name="F:CptS_321_HW4.Form1.components">
+        <member name="F:CptS321.Form1.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:CptS_321_HW4.Form1.Dispose(System.Boolean)">
+        <member name="M:CptS321.Form1.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:CptS_321_HW4.Form1.InitializeComponent">
+        <member name="M:CptS321.Form1.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="T:CptS_321_HW4.Program">
+        <member name="T:CptS321.Program">
             <summary>
             Primary Program class, starting the form execution
             </summary>
         </member>
-        <member name="M:CptS_321_HW4.Program.Main">
+        <member name="M:CptS321.Program.Main">
             <summary>
             The main entry point for the application.
             </summary>

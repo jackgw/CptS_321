@@ -37,6 +37,10 @@ namespace CptS321
 
             this.InitializeComponent();
 
+            /* Setup Event Handlers for CellEndEdit and CellBeginEdit */
+            this.dataGridView1.CellEndEdit += new DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.CellBeginEdit += new DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+
             /* Resize form window */
             this.Size = new System.Drawing.Size(800, 600);
 
@@ -63,10 +67,22 @@ namespace CptS321
         {
         }
 
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            /* Display text */
+            this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = this.spreadsheet.GetCell(e.ColumnIndex, e.RowIndex).Text;
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            this.spreadsheet.ChangeText(e.RowIndex, e.ColumnIndex, (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+        }
+
         private void SheetEventHandler(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
+                /* Update specific cell to new value */
                 case "text":
                     this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Value = ((Cell)sender).Value;
                     break;

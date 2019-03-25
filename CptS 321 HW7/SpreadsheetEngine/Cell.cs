@@ -23,6 +23,11 @@
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
+        /// subscribed via the sheet
+        /// </summary>
+        public event PropertyChangedEventHandler DependancyChanged;
+
+        /// <summary>
         /// Gets the column index of the cell
         /// </summary>
         public abstract int ColumnIndex { get; }
@@ -58,6 +63,24 @@
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
+        }
+
+        public void DependancyChangedHandler(object sender, PropertyChangedEventArgs e)
+        {
+            if (this.DependancyChanged != null)
+            {
+                this.DependancyChanged(this, e);
+            }
+        }
+
+        public void Subscribe(ref Cell target)
+        {
+            target.PropertyChanged += new PropertyChangedEventHandler(this.DependancyChangedHandler);
+        }
+
+        public void Unsubscribe(ref Cell target)
+        {
+            target.PropertyChanged -= new PropertyChangedEventHandler(this.DependancyChangedHandler);
         }
     }
 

@@ -45,6 +45,12 @@
         /// </summary>
         public event PropertyChangedEventHandler CellPropertyChanged;
 
+        private void SheetDependancyChangedHandler(object sender, PropertyChangedEventArgs e)
+        {
+            this.ChangeValue((Cell)sender);
+            // use event args to call changeValue()
+        }
+
         /// <summary>
         /// Gets the number of columns
         /// </summary>
@@ -92,12 +98,35 @@
         private void ChangeValue(Cell targetCell)
         {
             /* Conversion Required */
-            if (targetCell.Text[0] == '=')
+            if (targetCell.Text != null && targetCell.Text[0] == '=')
             {
+                int colNum = 0;
+                int rowNum = 0;
+                double value;
+                string result;
                 /* Set value equal to another cell's value */
-                int colNum = targetCell.Text[1] - 65;       // convert ascii to index
-                int rowNum = int.Parse(targetCell.Text.Substring(2, targetCell.Text.Length - 2)) - 1;   // Only villans do this
-                targetCell.ValueSet = this.cells[colNum, rowNum].Value;
+                ExpressionTree expTree = new ExpressionTree(targetCell.Text.TrimStart('='));
+
+                List<string> variableList = expTree.GetVariableNames();
+
+                /* Can assume that all variables will be cells in the form (A1, B2, etc.) for this Assignment */
+                foreach (string var in variableList)
+                {
+                    colNum = var[0] - 65;       // convert ascii to index
+                    rowNum = int.Parse(var[1].ToString()) - 1;
+
+                    /* subscribe dependant cell's dependancychanged to needed cell's propertychanged */
+                    targetCell.Unsubscribe(ref this.cells[colNum, rowNum]);
+                    targetCell.Subscribe(ref this.cells[colNum, rowNum]);
+                    targetCell.DependancyChanged += new PropertyChangedEventHandler(this.SheetDependancyChangedHandler);
+
+                    if (double.TryParse(this.cells[colNum, rowNum].Value, out value))
+                    {
+                        expTree.SetVariable(var, value);
+                    }
+                }
+
+                targetCell.ValueSet = expTree.Evaluate().ToString();
             }
             else
             {

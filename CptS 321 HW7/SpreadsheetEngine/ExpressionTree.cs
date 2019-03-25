@@ -226,5 +226,19 @@ namespace CptS321
                 return new VariableNode(name);
             }
         }
+
+        /// <summary>
+        /// Gets a list of all the variables in the expression
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetVariableNames()
+        {
+            List<string> keyNames = new List<string>();
+            foreach (KeyValuePair<string, double> element in this.variables)
+            {
+                keyNames.Add(element.Key);
+            }
+            return keyNames;
+        }
     }
 }
