@@ -1,4 +1,11 @@
-﻿namespace CptS321
+﻿// <copyright file="Sheet.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+// Jack Wharton
+// 11506329
+// CptS 321
+
+namespace CptS321
 {
     using System;
     using System.Collections.Generic;
@@ -74,7 +81,7 @@
         /// <param name="colIndex">Column Index</param>
         /// <param name="newText">New cell text</param>
         /// <returns>True if cell found, false otherwise</returns>
-        public bool ChangeText(int rowIndex, int colIndex, string newText)
+        public bool ChangeText(int colIndex, int rowIndex, string newText)
         {
             /* Subscribe to cell property changed event */
             this.cells[colIndex, rowIndex].PropertyChanged += this.CellPropertyChanged;
@@ -127,6 +134,7 @@
                 }
 
                 targetCell.ValueSet = expTree.Evaluate().ToString();
+                Console.WriteLine(targetCell.Value);
             }
             else
             {

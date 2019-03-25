@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpreadsheetTest</name>
+    </assembly>
+    <members>
+        <member name="T:CptS321.SpreadsheetEngineTest">
+            <summary>
+            Test class for the spreadsheet engine, testing various functionalities
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.ExpressionEvaluationTest">
+            <summary>
+            Tests the ability of the spreadsheet class and it's underlying engine to evaluate an
+            expression correctly, using operators: +, -, *, and parentheses
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.DependancyTest">
+            <summary>
+            Tests the ability of the spreadsheet class and it's underlying engine to evaluate an
+            expression that depends on the value of another cell
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.MultipleDependancyTest">
+            <summary>
+            Tests the ability of the spreadsheet class and it's underlying engine to evaluate an
+            expression depending on multiple different cells
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.DependancyUpdateTest">
+            <summary>
+            Tests the ability of the spreadsheet class and it's underlying engine to update the value of a cell
+            when a different cell that it is dependant on has its value changed
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.CellTextChangedTest">
+            <summary>
+            Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
+            </summary>
+        </member>
+    </members>
+</doc>

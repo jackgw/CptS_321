@@ -16,16 +16,6 @@
             Adds columns A-Z and rows 1-50 to the grid
             </summary>
         </member>
-        <member name="M:CptS321.Form1.CellTextChangedTest">
-            <summary>
-            Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
-            </summary>
-        </member>
-        <member name="M:CptS321.Form1.ValueCalculatedTest">
-            <summary>
-            Creates a test Sheet class, and tests whether entering '=B15' as the text of a cell changes the text to that of B15
-            </summary>
-        </member>
         <member name="F:CptS321.Form1.components">
             <summary>
             Required designer variable.
