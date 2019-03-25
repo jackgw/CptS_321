@@ -1,4 +1,11 @@
-﻿namespace CptS321
+﻿// <copyright file="Cell.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+// Jack Wharton
+// 11506329
+// CptS 321
+
+namespace CptS321
 {
     using System;
     using System.Collections.Generic;

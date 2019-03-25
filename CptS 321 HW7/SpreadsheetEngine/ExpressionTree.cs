@@ -230,7 +230,7 @@ namespace CptS321
         /// <summary>
         /// Gets a list of all the variables in the expression
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List containing all variable names that an expression depends on</returns>
         public List<string> GetVariableNames()
         {
             List<string> keyNames = new List<string>();
