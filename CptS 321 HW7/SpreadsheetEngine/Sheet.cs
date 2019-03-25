@@ -52,12 +52,6 @@ namespace CptS321
         /// </summary>
         public event PropertyChangedEventHandler CellPropertyChanged;
 
-        private void SheetDependancyChangedHandler(object sender, PropertyChangedEventArgs e)
-        {
-            this.ChangeValue((Cell)sender);
-            // use event args to call changeValue()
-        }
-
         /// <summary>
         /// Gets the number of columns
         /// </summary>
@@ -77,8 +71,8 @@ namespace CptS321
         /// <summary>
         /// Changes text of a specified cell
         /// </summary>
-        /// <param name="rowIndex">Row index</param>
         /// <param name="colIndex">Column Index</param>
+        /// <param name="rowIndex">Row index</param>
         /// <param name="newText">New cell text</param>
         /// <returns>True if cell found, false otherwise</returns>
         public bool ChangeText(int colIndex, int rowIndex, string newText)
@@ -99,6 +93,27 @@ namespace CptS321
         }
 
         /// <summary>
+        /// Returns the cell at a certain row and column index
+        /// </summary>
+        /// <param name="column">Column index of desired cell</param>
+        /// <param name="row">Row index of desired cell</param>
+        /// <returns>The cell object at given index</returns>
+        public Cell GetCell(int column, int row)
+        {
+            return this.cells[column, row];
+        }
+
+        /// <summary>
+        /// Handles dependancy changed of a cell by recalculating the value of that cell
+        /// </summary>
+        /// <param name="sender">Cell that fired the event</param>
+        /// <param name="e">event argument</param>
+        private void SheetDependancyChangedHandler(object sender, PropertyChangedEventArgs e)
+        {
+            this.ChangeValue((Cell)sender);
+        }
+
+        /// <summary>
         /// Checks the text of a cell to determine what to change the value to, and changes it
         /// </summary>
         /// <param name="targetCell">Cell to be changed</param>
@@ -110,7 +125,6 @@ namespace CptS321
                 int colNum = 0;
                 int rowNum = 0;
                 double value;
-                string result;
                 /* Set value equal to another cell's value */
                 ExpressionTree expTree = new ExpressionTree(targetCell.Text.TrimStart('='));
 
@@ -123,8 +137,8 @@ namespace CptS321
                     rowNum = int.Parse(var[1].ToString()) - 1;
 
                     /* subscribe dependant cell's dependancychanged to needed cell's propertychanged */
-                    targetCell.Unsubscribe(ref this.cells[colNum, rowNum]);
-                    targetCell.Subscribe(ref this.cells[colNum, rowNum]);
+                    targetCell.UnsubscribeDependancy(ref this.cells[colNum, rowNum]);
+                    targetCell.SubscribeDependancy(ref this.cells[colNum, rowNum]);
                     targetCell.DependancyChanged += new PropertyChangedEventHandler(this.SheetDependancyChangedHandler);
 
                     if (double.TryParse(this.cells[colNum, rowNum].Value, out value))
@@ -140,21 +154,6 @@ namespace CptS321
             {
                 targetCell.ValueSet = targetCell.Text;
             }
-        }
-
-        /// <summary>
-        /// Returns the cell at a certain row and column index
-        /// </summary>
-        /// <param name="column">Column index of desired cell</param>
-        /// <param name="row">Row index of desired cell</param>
-        /// <returns>The cell object at given index</returns>
-        public Cell GetCell(int column, int row)
-        {
-            return this.cells[column, row];
-        }
-
-        public void OnCellPropertyChanged()
-        {
         }
     }
 }

@@ -66,6 +66,21 @@ namespace CptS321
         }
 
         /// <summary>
+        /// Gets a list of all the variables in the expression
+        /// </summary>
+        /// <returns>List containing all variable names that an expression depends on</returns>
+        public List<string> GetVariableNames()
+        {
+            List<string> keyNames = new List<string>();
+            foreach (KeyValuePair<string, double> element in this.variables)
+            {
+                keyNames.Add(element.Key);
+            }
+
+            return keyNames;
+        }
+
+        /// <summary>
         /// Constructs the tree from a specific expression
         /// </summary>
         /// <returns>The root node of the expression tree</returns>
@@ -225,20 +240,6 @@ namespace CptS321
                 /* Variable Node */
                 return new VariableNode(name);
             }
-        }
-
-        /// <summary>
-        /// Gets a list of all the variables in the expression
-        /// </summary>
-        /// <returns>List containing all variable names that an expression depends on</returns>
-        public List<string> GetVariableNames()
-        {
-            List<string> keyNames = new List<string>();
-            foreach (KeyValuePair<string, double> element in this.variables)
-            {
-                keyNames.Add(element.Key);
-            }
-            return keyNames;
         }
     }
 }

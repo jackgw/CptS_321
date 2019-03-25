@@ -18,7 +18,7 @@ namespace CptS321
     /// </summary>
     internal class OperatorNodeFactory
     {
-        private char[] supportedOperators = { '+', '-', '*', '/', '(', ')'};
+        private char[] supportedOperators = { '+', '-', '*', '/', '(', ')' };
 
         /// <summary>
         /// Creates an operator node based on a given operator symbol

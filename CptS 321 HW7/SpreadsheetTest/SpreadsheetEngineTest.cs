@@ -16,7 +16,6 @@ namespace CptS321
     /// </summary>
     public class SpreadsheetEngineTest
     {
-
         /// <summary>
         /// Tests the ability of the spreadsheet class and it's underlying engine to evaluate an
         /// expression correctly, using operators: +, -, *, and parentheses

@@ -21,7 +21,6 @@ namespace CptS321
         /// <summary>
         /// Initializes a new instance of the <see cref="DivideOperatorNode"/> class.
         /// </summary>
-        /// <param name="c">operator symbol</param>
         public DivideOperatorNode()
         {
             this.Operator = '/';

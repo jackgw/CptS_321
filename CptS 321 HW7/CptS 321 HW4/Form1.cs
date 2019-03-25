@@ -75,7 +75,7 @@ namespace CptS321
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            this.spreadsheet.ChangeText(e.RowIndex, e.ColumnIndex, (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+            this.spreadsheet.ChangeText(e.ColumnIndex, e.RowIndex, (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
         }
 
         private void SheetEventHandler(object sender, PropertyChangedEventArgs e)
@@ -104,17 +104,17 @@ namespace CptS321
             {
                 col = rand.Next(0, 25);
                 row = rand.Next(0, 49);
-                this.spreadsheet.ChangeText(row, col, "Hello World!");
+                this.spreadsheet.ChangeText(col, row, "Hello World!");
             }
 
             for (i = 0; i < 50; i++)
             {
-                this.spreadsheet.ChangeText(i, 1, "This is cell B" + (i + 1).ToString());
+                this.spreadsheet.ChangeText(1, i, "This is cell B" + (i + 1).ToString());
             }
 
             for (i = 0; i < 50; i++)
             {
-                this.spreadsheet.ChangeText(i, 0, "=B" + (i + 1).ToString());
+                this.spreadsheet.ChangeText(0, i, "=B" + (i + 1).ToString());
             }
         }
     }

@@ -21,7 +21,6 @@ namespace CptS321
         /// <summary>
         /// Initializes a new instance of the <see cref="SubtractOperatorNode"/> class.
         /// </summary>
-        /// <param name="c">Operator symbol</param>
         public SubtractOperatorNode()
         {
             this.Operator = '-';

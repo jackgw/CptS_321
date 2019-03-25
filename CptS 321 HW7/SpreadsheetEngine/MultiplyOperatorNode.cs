@@ -21,7 +21,6 @@ namespace CptS321
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiplyOperatorNode"/> class.
         /// </summary>
-        /// <param name="c">operator symbol</param>
         public MultiplyOperatorNode()
         {
             this.Operator = '*';

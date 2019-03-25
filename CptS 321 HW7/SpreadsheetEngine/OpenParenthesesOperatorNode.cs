@@ -21,7 +21,6 @@ namespace CptS321
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenParenthesesOperatorNode"/> class.
         /// </summary>
-        /// <param name="c">operator symbol</param>
         public OpenParenthesesOperatorNode()
         {
             this.Operator = '(';
