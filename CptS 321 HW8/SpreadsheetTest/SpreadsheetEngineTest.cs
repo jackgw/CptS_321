@@ -131,5 +131,41 @@ namespace CptS321
             spreadsheet.ChangeText(5, 5, "10");
             Assert.AreEqual(double.Parse(spreadsheet.GetCell(5, 5).Value), 10);
         }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet and it's underlying logic to undo changed text
+        /// </summary>
+        [Test]
+        public void UndoTextTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
+        /// </summary>
+        [Test]
+        public void UndoTextColor()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet and it's underlying logic to undo changed text
+        /// </summary>
+        [Test]
+        public void RedoTextTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
+        /// </summary>
+        [Test]
+        public void RedoTextColor()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+        }
     }
 }
