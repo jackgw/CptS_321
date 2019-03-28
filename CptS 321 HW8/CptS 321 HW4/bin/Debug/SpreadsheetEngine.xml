@@ -40,6 +40,11 @@
             the 'Absract Product' creating the framework of a cell
             </summary>
         </member>
+        <member name="F:CptS321.Cell.bgcolor">
+            <summary>
+            Bakcground color of the cell
+            </summary>
+        </member>
         <member name="F:CptS321.Cell.columnIndex">
             <summary>
             Column index field
@@ -68,6 +73,11 @@
         <member name="E:CptS321.Cell.DependancyChanged">
             <summary>
             subscribed via the sheet
+            </summary>
+        </member>
+        <member name="P:CptS321.Cell.BGColor">
+            <summary>
+            Gets or sets the background color
             </summary>
         </member>
         <member name="P:CptS321.Cell.ColumnIndex">
@@ -360,6 +370,15 @@
             <param name="newText">New cell text</param>
             <returns>True if cell found, false otherwise</returns>
         </member>
+        <member name="M:CptS321.Sheet.ChangeBGColor(System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Changes the BG color of the specified cell
+            </summary>
+            <param name="colIndex">Column index</param>
+            <param name="rowIndex">Row index</param>
+            <param name="colorVal">New background color as a uint</param>
+            <returns>True if changed successfully, false otherwise</returns>
+        </member>
         <member name="M:CptS321.Sheet.GetCell(System.Int32,System.Int32)">
             <summary>
             Returns the cell at a certain row and column index
@@ -392,6 +411,12 @@
             </summary>
             <param name="columnNum">Column the cell is in</param>
             <param name="rowNum">Row the cell is in</param>
+        </member>
+        <member name="P:CptS321.SpreadsheetCell.BGColor">
+            <summary>
+            Gets or sets the color of the cell.
+            If the color is changed, fire property changed event
+            </summary>
         </member>
         <member name="P:CptS321.SpreadsheetCell.ColumnIndex">
             <summary>

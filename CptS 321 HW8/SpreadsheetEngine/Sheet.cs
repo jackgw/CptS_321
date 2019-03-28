@@ -93,6 +93,26 @@ namespace CptS321
         }
 
         /// <summary>
+        /// Changes the BG color of the specified cell
+        /// </summary>
+        /// <param name="colIndex">Column index</param>
+        /// <param name="rowIndex">Row index</param>
+        /// <param name="colorVal">New background color as a uint</param>
+        /// <returns>True if changed successfully, false otherwise</returns>
+        public bool ChangeBGColor(int colIndex, int rowIndex, uint colorVal)
+        {
+            this.cells[colIndex, rowIndex].PropertyChanged += this.CellPropertyChanged;
+
+            if (this.cells[colIndex, rowIndex] != null)
+            {
+                this.cells[colIndex, rowIndex].BGColor = colorVal;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Returns the cell at a certain row and column index
         /// </summary>
         /// <param name="column">Column index of desired cell</param>

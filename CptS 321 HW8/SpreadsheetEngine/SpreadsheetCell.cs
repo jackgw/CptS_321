@@ -26,10 +26,36 @@ namespace CptS321
         /// <param name="rowNum">Row the cell is in</param>
         public SpreadsheetCell(int columnNum, int rowNum)
         {
+            this.BGColor = 0xFFFFFFFF;
             this.columnIndex = columnNum;
             this.rowIndex = rowNum;
             this.text = string.Empty;
             this.value = string.Empty;
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the cell.
+        /// If the color is changed, fire property changed event
+        /// </summary>
+        public override uint BGColor
+        {
+            get
+            {
+                return this.bgcolor;
+            }
+
+            set
+            {
+                if (value == this.bgcolor)
+                {
+                    return;
+                }
+                else
+                {
+                    this.bgcolor = value;
+                    this.OnPropertyChanged("color");
+                }
+            }
         }
 
         /// <summary>

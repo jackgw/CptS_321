@@ -89,32 +89,22 @@ namespace CptS321
                 case "value":
                     this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Value = ((Cell)sender).Value;
                     break;
+                case "color":
+                    this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Style.BackColor = System.Drawing.Color.FromArgb((int)((Cell)sender).BGColor);
+                    break;
                 default:
                     break;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void changeBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /* DEMO */
-            int i;
-            int col, row;
-            Random rand = new Random();
-            for (i = 0; i < 50; i++)
+            if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                col = rand.Next(0, 25);
-                row = rand.Next(0, 49);
-                this.spreadsheet.ChangeText(col, row, "Hello World!");
-            }
-
-            for (i = 0; i < 50; i++)
-            {
-                this.spreadsheet.ChangeText(1, i, "This is cell B" + (i + 1).ToString());
-            }
-
-            for (i = 0; i < 50; i++)
-            {
-                this.spreadsheet.ChangeText(0, i, "=B" + (i + 1).ToString());
+                foreach (DataGridViewCell cell in this.dataGridView1.SelectedCells)
+                {
+                    this.spreadsheet.ChangeBGColor(cell.ColumnIndex, cell.RowIndex, (uint)this.colorDialog1.Color.ToArgb());
+                }
             }
         }
     }

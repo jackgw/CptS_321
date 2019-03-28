@@ -34,3 +34,12 @@ C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW7\SpreadsheetEngine\bin\Debug\
 C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW7\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.csprojResolveAssemblyReference.cache
 C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW7\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.dll
 C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW7\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\SpreadsheetEngine.XML
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\SpreadsheetEngine.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\SpreadsheetEngine.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\nunit.framework.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\nunit.framework.pdb
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\bin\Debug\nunit.framework.xml
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.csprojResolveAssemblyReference.cache
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.dll
+C:\Users\jackg\Desktop\CptS 321\GitLab\CptS 321 HW8\SpreadsheetEngine\obj\Debug\SpreadsheetEngine.pdb

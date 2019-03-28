@@ -20,6 +20,11 @@ namespace CptS321
     public abstract class Cell : INotifyPropertyChanged
     {
         /// <summary>
+        /// Bakcground color of the cell
+        /// </summary>
+        protected uint bgcolor;
+
+        /// <summary>
         /// Column index field
         /// </summary>
         protected int columnIndex;
@@ -48,6 +53,11 @@ namespace CptS321
         /// subscribed via the sheet
         /// </summary>
         public event PropertyChangedEventHandler DependancyChanged;
+
+        /// <summary>
+        /// Gets or sets the background color
+        /// </summary>
+        public abstract uint BGColor { get; set; }
 
         /// <summary>
         /// Gets the column index of the cell
