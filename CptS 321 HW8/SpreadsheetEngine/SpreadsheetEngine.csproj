@@ -51,7 +51,10 @@
     <Compile Include="AddOperatorNode.cs" />
     <Compile Include="BaseNode.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="ChangeColorCommand.cs" />
+    <Compile Include="ChangeTextCommand.cs" />
     <Compile Include="CloseParenthesesOperatorNode.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="ConstantNode.cs" />
     <Compile Include="DivideOperatorNode.cs" />
     <Compile Include="ExpressionTree.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="OperatorNodeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sheet.cs" />
+    <Compile Include="SheetInvoker.cs" />
     <Compile Include="SpreadsheetCell.cs" />
     <Compile Include="SubtractOperatorNode.cs" />
     <Compile Include="VariableNode.cs" />
