@@ -1,4 +1,4 @@
-﻿// <copyright file="ICommand.cs" company="PlaceholderCompany">
+﻿// <copyright file="Command.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // Jack Wharton
@@ -18,8 +18,14 @@ namespace CptS321
     /// </summary>
     public abstract class Command
     {
+        /// <summary>
+        /// Executes the command
+        /// </summary>
         public abstract void Execute();
 
+        /// <summary>
+        /// Undoes the last execution of the command
+        /// </summary>
         public abstract void Undo();
     }
 }
