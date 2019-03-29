@@ -148,6 +148,11 @@
             <param name="variables">Variables dictionary</param>
             <returns>Value of node including all descendant nodes</returns>
         </member>
+        <member name="T:CptS321.Command">
+            <summary>
+            Interface representing a general command with Execute and Undo functionality
+            </summary>
+        </member>
         <member name="T:CptS321.ConstantNode">
             <summary>
             Expression tree node representing a constant
@@ -361,23 +366,12 @@
             Gets the number of rows
             </summary>
         </member>
-        <member name="M:CptS321.Sheet.ChangeText(System.Int32,System.Int32,System.String)">
+        <member name="M:CptS321.Sheet.SetSubsciptions(System.Int32,System.Int32)">
             <summary>
-            Changes text of a specified cell
+            Sets the CellPropertyChanged event to subscribe to all cell propertychanged events
             </summary>
-            <param name="colIndex">Column Index</param>
-            <param name="rowIndex">Row index</param>
-            <param name="newText">New cell text</param>
-            <returns>True if cell found, false otherwise</returns>
-        </member>
-        <member name="M:CptS321.Sheet.ChangeBGColor(System.Int32,System.Int32,System.UInt32)">
-            <summary>
-            Changes the BG color of the specified cell
-            </summary>
-            <param name="colIndex">Column index</param>
-            <param name="rowIndex">Row index</param>
-            <param name="colorVal">New background color as a uint</param>
-            <returns>True if changed successfully, false otherwise</returns>
+            <param name="cols">Column index</param>
+            <param name="rows">Row index</param>
         </member>
         <member name="M:CptS321.Sheet.GetCell(System.Int32,System.Int32)">
             <summary>
@@ -394,11 +388,24 @@
             <param name="sender">Cell that fired the event</param>
             <param name="e">event argument</param>
         </member>
+        <member name="M:CptS321.Sheet.OnCellPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Handles the cell PropertyChanged event by calculating the value if it is a text change, and forwarding it to the 
+            form's event handler to update the cell in the UI
+            </summary>
+            <param name="sender">Cell that fired the event</param>
+            <param name="e">event argument</param>
+        </member>
         <member name="M:CptS321.Sheet.ChangeValue(CptS321.Cell)">
             <summary>
             Checks the text of a cell to determine what to change the value to, and changes it
             </summary>
             <param name="targetCell">Cell to be changed</param>
+        </member>
+        <member name="T:CptS321.SheetInvoker">
+            <summary>
+            The Invoker class for the spreadsheet command pattern
+            </summary>
         </member>
         <member name="T:CptS321.SpreadsheetCell">
             <summary>

@@ -1,4 +1,9 @@
-﻿
+﻿// <copyright file="SheetInvoker.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+// Jack Wharton
+// 11506329
+// CptS 321
 
 namespace CptS321
 {
@@ -15,11 +20,6 @@ namespace CptS321
     {
         private Stack<Command> undoStack = new Stack<Command>();
         private Stack<Command> redoStack = new Stack<Command>();
-
-        public SheetInvoker()
-        {
-
-        }
 
         public void ExecuteCommand(Command cmd)
         {
@@ -43,7 +43,7 @@ namespace CptS321
 
         public string CheckUndo()
         {
-            if (this.undoStack.Peek() != null)
+            if (this.undoStack.Count != 0)
             {
                 return this.undoStack.Peek().Name;
             }
@@ -53,7 +53,7 @@ namespace CptS321
 
         public string CheckRedo()
         {
-            if (this.redoStack.Peek() != null)
+            if (this.redoStack.Count != 0)
             {
                 return this.redoStack.Peek().Name;
             }

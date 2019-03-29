@@ -15,14 +15,13 @@ namespace CptS321
 
     public class ChangeColorCommand : Command
     {
-        private int colIndex;
-        private int rowIndex;
+        private Cell cell;
         private uint color;
+        private uint prevColor;
 
-        public ChangeColorCommand(int colNum, int rowNum, uint newColor)
+        public ChangeColorCommand(Cell newCell, uint newColor)
         {
-            this.colIndex = colNum;
-            this.rowIndex = rowNum;
+            this.cell = newCell;
             this.color = newColor;
         }
 
@@ -36,12 +35,13 @@ namespace CptS321
 
         public override void Execute()
         {
-
+            this.prevColor = this.cell.BGColor;
+            this.cell.BGColor = this.color;
         }
 
         public override void Undo()
         {
-
+            this.cell.BGColor = this.prevColor;
         }
     }
 }

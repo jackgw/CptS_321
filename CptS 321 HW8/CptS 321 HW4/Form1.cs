@@ -24,6 +24,7 @@ namespace CptS321
     public partial class Form1 : Form
     {
         private Sheet spreadsheet = new Sheet(26, 50);
+        private SheetInvoker commandControl = new SheetInvoker();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
@@ -34,6 +35,7 @@ namespace CptS321
         {
             char letter = 'A';
             this.spreadsheet.CellPropertyChanged += new PropertyChangedEventHandler(this.SheetEventHandler);
+            this.spreadsheet.SetSubsciptions(26, 50);
 
             this.InitializeComponent();
 
@@ -57,6 +59,8 @@ namespace CptS321
             {
                 row.HeaderCell.Value = (row.Index + 1).ToString();
             }
+
+            this.CheckUndoRedo();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,14 +79,16 @@ namespace CptS321
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            this.spreadsheet.ChangeText(e.ColumnIndex, e.RowIndex, (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+            Command cmd = new ChangeTextCommand(this.spreadsheet.GetCell(e.ColumnIndex, e.RowIndex), (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+            this.commandControl.ExecuteCommand(cmd);
+            this.CheckUndoRedo();
         }
 
         private void SheetEventHandler(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
-                /* Update specific cell to new value */
+                /* Update cell property in DataGird */
                 case "text":
                     this.dataGridView1.Rows[((Cell)sender).RowIndex].Cells[((Cell)sender).ColumnIndex].Value = ((Cell)sender).Value;
                     break;
@@ -103,8 +109,50 @@ namespace CptS321
             {
                 foreach (DataGridViewCell cell in this.dataGridView1.SelectedCells)
                 {
-                    this.spreadsheet.ChangeBGColor(cell.ColumnIndex, cell.RowIndex, (uint)this.colorDialog1.Color.ToArgb());
+                    Command cmd = new ChangeColorCommand(this.spreadsheet.GetCell(cell.ColumnIndex, cell.RowIndex), (uint)this.colorDialog1.Color.ToArgb());
+                    this.commandControl.ExecuteCommand(cmd);
+                    this.CheckUndoRedo();
                 }
+            }
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.commandControl.UndoLastCommand();
+            this.CheckUndoRedo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.commandControl.RedoLastCommand();
+            this.CheckUndoRedo();
+        }
+
+        private void CheckUndoRedo()
+        {
+            string undo = this.commandControl.CheckUndo();
+            string redo = this.commandControl.CheckRedo();
+
+            if (undo == string.Empty)
+            {
+                this.undoToolStripMenuItem.Enabled = false;
+                this.undoToolStripMenuItem.Text = "Undo";
+            }
+            else
+            {
+                this.undoToolStripMenuItem.Enabled = true;
+                this.undoToolStripMenuItem.Text = "Undo " + undo;
+            }
+
+            if (redo == string.Empty)
+            {
+                this.redoToolStripMenuItem.Enabled = false;
+                this.redoToolStripMenuItem.Text = "Redo";
+            }
+            else
+            {
+                this.redoToolStripMenuItem.Enabled = true;
+                this.redoToolStripMenuItem.Text = "Redo " + redo;
             }
         }
     }

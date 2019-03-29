@@ -15,14 +15,13 @@ namespace CptS321
 
     public class ChangeTextCommand : Command
     {
-        private int colIndex;
-        private int rowIndex;
+        private Cell cell;
         private string text;
+        private string prevText;
 
-        public ChangeTextCommand(int colNum, int rowNum, string newText)
+        public ChangeTextCommand(Cell newCell, string newText)
         {
-            this.colIndex = colNum;
-            this.rowIndex = rowNum;
+            this.cell = newCell;
             this.text = newText;
         }
 
@@ -36,12 +35,13 @@ namespace CptS321
 
         public override void Execute()
         {
-
+            this.prevText = this.cell.Text;
+            this.cell.Text = this.text;
         }
 
         public override void Undo()
         {
-
+            this.cell.Text = this.prevText;
         }
     }
 }
