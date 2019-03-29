@@ -18,29 +18,55 @@ namespace CptS321
     /// </summary>
     public class SheetInvoker
     {
-        private Stack<Command> undoStack = new Stack<Command>();
-        private Stack<Command> redoStack = new Stack<Command>();
+        private Stack<CommandCollection> undoStack = new Stack<CommandCollection>();
+        private Stack<CommandCollection> redoStack = new Stack<CommandCollection>();
 
-        public void ExecuteCommand(Command cmd)
+        /// <summary>
+        /// Executes every command in the CommandCollection object
+        /// </summary>
+        /// <param name="commands">Collection of command objects</param>
+        public void ExecuteCommand(CommandCollection commands)
         {
-            cmd.Execute();
-            this.undoStack.Push(cmd);
+            foreach (Command cmd in commands.GetCommandList())
+            {
+                cmd.Execute();
+            }
+
+            this.undoStack.Push(commands);
         }
 
+        /// <summary>
+        /// Undoes the last executed command using the undo stack
+        /// </summary>
         public void UndoLastCommand()
         {
-            Command tempCmd = this.undoStack.Pop();
-            tempCmd.Undo();
-            this.redoStack.Push(tempCmd);
+            CommandCollection tempCommands = this.undoStack.Pop();
+            foreach (Command cmd in tempCommands.GetCommandList())
+            {
+                cmd.Undo();
+            }
+
+            this.redoStack.Push(tempCommands);
         }
 
+        /// <summary>
+        /// Redoes the last undone command using the redo stack
+        /// </summary>
         public void RedoLastCommand()
         {
-            Command tempCmd = this.redoStack.Pop();
-            tempCmd.Execute();
-            this.undoStack.Push(tempCmd);
+            CommandCollection tempCommands = this.redoStack.Pop();
+            foreach (Command cmd in tempCommands.GetCommandList())
+            {
+                cmd.Execute();
+            }
+
+            this.undoStack.Push(tempCommands);
         }
 
+        /// <summary>
+        /// Checks the top of the undo stack. If stack is not empty, return the name. Returns 0 otherwise
+        /// </summary>
+        /// <returns>The name of the top item of the stack</returns>
         public string CheckUndo()
         {
             if (this.undoStack.Count != 0)
@@ -51,6 +77,10 @@ namespace CptS321
             return string.Empty;
         }
 
+        /// <summary>
+        /// Checks the top of the redo stack. If stack is not empty, return the name. Returns 0 otherwise
+        /// </summary>
+        /// <returns>The name of the top item of the stack</returns>
         public string CheckRedo()
         {
             if (this.redoStack.Count != 0)

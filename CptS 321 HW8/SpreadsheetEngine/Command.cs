@@ -18,8 +18,6 @@ namespace CptS321
     /// </summary>
     public abstract class Command
     {
-        public abstract string Name { get; }
-
         public abstract void Execute();
 
         public abstract void Undo();

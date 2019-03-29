@@ -55,6 +55,7 @@
     <Compile Include="ChangeTextCommand.cs" />
     <Compile Include="CloseParenthesesOperatorNode.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CommandCollection.cs" />
     <Compile Include="ConstantNode.cs" />
     <Compile Include="DivideOperatorNode.cs" />
     <Compile Include="ExpressionTree.cs" />

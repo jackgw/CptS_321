@@ -38,5 +38,25 @@
             Creates a test Sheet class, and uses the GetCell() method to test whether ChangeText() worked correctly.
             </summary>
         </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.UndoTextTest">
+            <summary>
+            Tests the ability of the spreadsheet and it's underlying logic to undo changed text
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.UndoColortest">
+            <summary>
+            Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.RedoTextTest">
+            <summary>
+            Tests the ability of the spreadsheet and it's underlying logic to undo changed text
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.RedoColorTest">
+            <summary>
+            Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
+            </summary>
+        </member>
     </members>
 </doc>

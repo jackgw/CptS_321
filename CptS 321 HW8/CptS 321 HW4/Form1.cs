@@ -35,7 +35,6 @@ namespace CptS321
         {
             char letter = 'A';
             this.spreadsheet.CellPropertyChanged += new PropertyChangedEventHandler(this.SheetEventHandler);
-            this.spreadsheet.SetSubsciptions(26, 50);
 
             this.InitializeComponent();
 
@@ -80,7 +79,8 @@ namespace CptS321
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             Command cmd = new ChangeTextCommand(this.spreadsheet.GetCell(e.ColumnIndex, e.RowIndex), (string)this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-            this.commandControl.ExecuteCommand(cmd);
+            CommandCollection commands = new CommandCollection("Text Change", cmd);
+            this.commandControl.ExecuteCommand(commands);
             this.CheckUndoRedo();
         }
 
@@ -107,12 +107,16 @@ namespace CptS321
         {
             if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
+                CommandCollection commands = new CommandCollection("Background Color Change");
+
                 foreach (DataGridViewCell cell in this.dataGridView1.SelectedCells)
                 {
                     Command cmd = new ChangeColorCommand(this.spreadsheet.GetCell(cell.ColumnIndex, cell.RowIndex), (uint)this.colorDialog1.Color.ToArgb());
-                    this.commandControl.ExecuteCommand(cmd);
-                    this.CheckUndoRedo();
+                    commands.AddCommand(cmd);
                 }
+
+                this.commandControl.ExecuteCommand(commands);
+                this.CheckUndoRedo();
             }
         }
 

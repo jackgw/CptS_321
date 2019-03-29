@@ -131,6 +131,50 @@
             <param name="sender">the object that threw the property changed event</param>
             <param name="e">property changed event argument</param>
         </member>
+        <member name="T:CptS321.ChangeColorCommand">
+            <summary>
+            Concrete command for the changing of a cell's background color
+            </summary>
+        </member>
+        <member name="M:CptS321.ChangeColorCommand.#ctor(CptS321.Cell,System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.ChangeColorCommand"/> class.
+            </summary>
+            <param name="newCell">The cell to be modified</param>
+            <param name="newColor">The new background color</param>
+        </member>
+        <member name="M:CptS321.ChangeColorCommand.Execute">
+            <summary>
+            Changes the Background color of the cell to the new value
+            </summary>
+        </member>
+        <member name="M:CptS321.ChangeColorCommand.Undo">
+            <summary>
+            Changes the Background color of the cell to the previous value
+            </summary>
+        </member>
+        <member name="T:CptS321.ChangeTextCommand">
+            <summary>
+            Concrete command for the changing of the cell's text
+            </summary>
+        </member>
+        <member name="M:CptS321.ChangeTextCommand.#ctor(CptS321.Cell,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.ChangeTextCommand"/> class.
+            </summary>
+            <param name="newCell">Cell to be changed</param>
+            <param name="newText">New text of the cell</param>
+        </member>
+        <member name="M:CptS321.ChangeTextCommand.Execute">
+            <summary>
+            Changes the text of the cell to the new value
+            </summary>
+        </member>
+        <member name="M:CptS321.ChangeTextCommand.Undo">
+            <summary>
+            Changes the text of the cell to its previous value
+            </summary>
+        </member>
         <member name="T:CptS321.CloseParenthesesOperatorNode">
             <summary>
             Operator node to represent open parentheses. For use in building tree but not to be evaluated
@@ -152,6 +196,43 @@
             <summary>
             Interface representing a general command with Execute and Undo functionality
             </summary>
+        </member>
+        <member name="T:CptS321.CommandCollection">
+            <summary>
+            Encapsulates a List of simple Command objects and a title for the overall operation
+            </summary>
+        </member>
+        <member name="M:CptS321.CommandCollection.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.CommandCollection"/> class.
+            Sets the name of the collection to the provided string
+            </summary>
+            <param name="newName">Collection Name</param>
+        </member>
+        <member name="M:CptS321.CommandCollection.#ctor(System.String,CptS321.Command[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.CommandCollection"/> class.
+            Accepts the name of the collection and an unspecified number of command object to be inserted into the list
+            </summary>
+            <param name="newName">Collection Name</param>
+            <param name="cmds">Commands</param>
+        </member>
+        <member name="P:CptS321.CommandCollection.Name">
+            <summary>
+            Gets the Name of the collection
+            </summary>
+        </member>
+        <member name="M:CptS321.CommandCollection.GetCommandList">
+            <summary>
+            Gets the list of commands in the collection
+            </summary>
+            <returns>THe List of commands</returns>
+        </member>
+        <member name="M:CptS321.CommandCollection.AddCommand(CptS321.Command)">
+            <summary>
+            Adds a single command to the command list
+            </summary>
+            <param name="newCmd">A new Command</param>
         </member>
         <member name="T:CptS321.ConstantNode">
             <summary>
@@ -366,12 +447,23 @@
             Gets the number of rows
             </summary>
         </member>
-        <member name="M:CptS321.Sheet.SetSubsciptions(System.Int32,System.Int32)">
+        <member name="M:CptS321.Sheet.ChangeText(System.Int32,System.Int32,System.String)">
             <summary>
-            Sets the CellPropertyChanged event to subscribe to all cell propertychanged events
+            Changes text of a specified cell
             </summary>
-            <param name="cols">Column index</param>
-            <param name="rows">Row index</param>
+            <param name="colIndex">Column Index</param>
+            <param name="rowIndex">Row index</param>
+            <param name="newText">New cell text</param>
+            <returns>True if cell found, false otherwise</returns>
+        </member>
+        <member name="M:CptS321.Sheet.ChangeBGColor(System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Changes the BG color of the specified cell
+            </summary>
+            <param name="colIndex">Column index</param>
+            <param name="rowIndex">Row index</param>
+            <param name="colorVal">New background color as a uint</param>
+            <returns>True if changed successfully, false otherwise</returns>
         </member>
         <member name="M:CptS321.Sheet.GetCell(System.Int32,System.Int32)">
             <summary>
@@ -390,7 +482,7 @@
         </member>
         <member name="M:CptS321.Sheet.OnCellPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
-            Handles the cell PropertyChanged event by calculating the value if it is a text change, and forwarding it to the 
+            Handles the cell PropertyChanged event by calculating the value if it is a text change, and forwarding it to the
             form's event handler to update the cell in the UI
             </summary>
             <param name="sender">Cell that fired the event</param>
@@ -406,6 +498,34 @@
             <summary>
             The Invoker class for the spreadsheet command pattern
             </summary>
+        </member>
+        <member name="M:CptS321.SheetInvoker.ExecuteCommand(CptS321.CommandCollection)">
+            <summary>
+            Executes every command in the CommandCollection object
+            </summary>
+            <param name="commands">Collection of command objects</param>
+        </member>
+        <member name="M:CptS321.SheetInvoker.UndoLastCommand">
+            <summary>
+            Undoes the last executed command using the undo stack
+            </summary>
+        </member>
+        <member name="M:CptS321.SheetInvoker.RedoLastCommand">
+            <summary>
+            Redoes the last undone command using the redo stack
+            </summary>
+        </member>
+        <member name="M:CptS321.SheetInvoker.CheckUndo">
+            <summary>
+            Checks the top of the undo stack. If stack is not empty, return the name. Returns 0 otherwise
+            </summary>
+            <returns>The name of the top item of the stack</returns>
+        </member>
+        <member name="M:CptS321.SheetInvoker.CheckRedo">
+            <summary>
+            Checks the top of the redo stack. If stack is not empty, return the name. Returns 0 otherwise
+            </summary>
+            <returns>The name of the top item of the stack</returns>
         </member>
         <member name="T:CptS321.SpreadsheetCell">
             <summary>

@@ -43,6 +43,7 @@ namespace CptS321
                 for (j = 0; j < rows; j++)
                 {
                     this.cells[i, j] = new SpreadsheetCell(i, j);
+                    this.cells[i, j].PropertyChanged += new PropertyChangedEventHandler(this.OnCellPropertyChanged);
                 }
             }
         }
@@ -69,22 +70,41 @@ namespace CptS321
         }
 
         /// <summary>
-        /// Sets the CellPropertyChanged event to subscribe to all cell propertychanged events
+        /// Changes text of a specified cell
         /// </summary>
-        /// <param name="cols">Column index</param>
-        /// <param name="rows">Row index</param>
-        public void SetSubsciptions(int cols, int rows)
+        /// <param name="colIndex">Column Index</param>
+        /// <param name="rowIndex">Row index</param>
+        /// <param name="newText">New cell text</param>
+        /// <returns>True if cell found, false otherwise</returns>
+        public bool ChangeText(int colIndex, int rowIndex, string newText)
         {
-            int i, j;
-
-            for (i = 0; i < cols; i++)
+            if (this.cells[colIndex, rowIndex] != null)
             {
-                for (j = 0; j < rows; j++)
-                {
-                    /* Subscribe to cell property changed event */
-                    this.cells[i, j].PropertyChanged += new PropertyChangedEventHandler(this.OnCellPropertyChanged);
-                }
+                this.cells[colIndex, rowIndex].Text = newText;
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Changes the BG color of the specified cell
+        /// </summary>
+        /// <param name="colIndex">Column index</param>
+        /// <param name="rowIndex">Row index</param>
+        /// <param name="colorVal">New background color as a uint</param>
+        /// <returns>True if changed successfully, false otherwise</returns>
+        public bool ChangeBGColor(int colIndex, int rowIndex, uint colorVal)
+        {
+            if (this.cells[colIndex, rowIndex] != null)
+            {
+                this.cells[colIndex, rowIndex].BGColor = colorVal;
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -109,7 +129,7 @@ namespace CptS321
         }
 
         /// <summary>
-        /// Handles the cell PropertyChanged event by calculating the value if it is a text change, and forwarding it to the 
+        /// Handles the cell PropertyChanged event by calculating the value if it is a text change, and forwarding it to the
         /// form's event handler to update the cell in the UI
         /// </summary>
         /// <param name="sender">Cell that fired the event</param>
@@ -122,7 +142,10 @@ namespace CptS321
                 this.ChangeValue((Cell)sender);
             }
 
-            this.CellPropertyChanged(sender, e);
+            if (this.CellPropertyChanged != null)
+            {
+                this.CellPropertyChanged(sender, e);
+            }
         }
 
         /// <summary>

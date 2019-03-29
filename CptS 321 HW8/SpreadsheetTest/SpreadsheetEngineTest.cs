@@ -139,15 +139,37 @@ namespace CptS321
         public void UndoTextTest()
         {
             Sheet spreadsheet = new Sheet(26, 50);
+            SheetInvoker commandControl = new SheetInvoker();
+
+            Command cmd1 = new ChangeTextCommand(spreadsheet.GetCell(1, 1), "100");
+            CommandCollection commands1 = new CommandCollection("Text Change", cmd1);
+            commandControl.ExecuteCommand(commands1);
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Text, "100");
+
+            commandControl.UndoLastCommand();
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Text, string.Empty);
         }
 
         /// <summary>
         /// Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
         /// </summary>
         [Test]
-        public void UndoTextColor()
+        public void UndoColortest()
         {
             Sheet spreadsheet = new Sheet(26, 50);
+            SheetInvoker commandControl = new SheetInvoker();
+
+            Command cmd1 = new ChangeColorCommand(spreadsheet.GetCell(1, 1), 0x000FFFFF);
+            CommandCollection commands1 = new CommandCollection("Text Change", cmd1);
+            commandControl.ExecuteCommand(commands1);
+
+            Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0x000FFFFF);
+
+            commandControl.UndoLastCommand();
+
+            Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0xFFFFFFFF);
         }
 
         /// <summary>
@@ -157,15 +179,45 @@ namespace CptS321
         public void RedoTextTest()
         {
             Sheet spreadsheet = new Sheet(26, 50);
+            SheetInvoker commandControl = new SheetInvoker();
+
+            Command cmd1 = new ChangeTextCommand(spreadsheet.GetCell(1, 1), "100");
+            CommandCollection commands1 = new CommandCollection("Text Change", cmd1);
+            commandControl.ExecuteCommand(commands1);
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Text, "100");
+
+            commandControl.UndoLastCommand();
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Text, string.Empty);
+
+            commandControl.RedoLastCommand();
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Text, "100");
         }
 
         /// <summary>
         /// Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
         /// </summary>
         [Test]
-        public void RedoTextColor()
+        public void RedoColorTest()
         {
             Sheet spreadsheet = new Sheet(26, 50);
+            SheetInvoker commandControl = new SheetInvoker();
+
+            Command cmd1 = new ChangeColorCommand(spreadsheet.GetCell(1, 1), 0x000FFFFF);
+            CommandCollection commands1 = new CommandCollection("Text Change", cmd1);
+            commandControl.ExecuteCommand(commands1);
+
+            Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0x000FFFFF);
+
+            commandControl.UndoLastCommand();
+
+            Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0xFFFFFFFF);
+
+            commandControl.RedoLastCommand();
+
+            Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0x000FFFFF);
         }
     }
 }
