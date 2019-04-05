@@ -132,6 +132,16 @@ namespace CptS321
             this.CheckUndoRedo();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void CheckUndoRedo()
         {
             string undo = this.commandControl.CheckUndo();

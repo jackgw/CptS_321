@@ -13,6 +13,7 @@ namespace CptS321
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml;
     using NUnit.Framework;
 
     /// <summary>
@@ -116,6 +117,22 @@ namespace CptS321
         public Cell GetCell(int column, int row)
         {
             return this.cells[column, row];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SaveXML()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void LoadXML()
+        {
+
         }
 
         /// <summary>

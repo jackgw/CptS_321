@@ -219,5 +219,30 @@ namespace CptS321
 
             Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0x000FFFFF);
         }
+
+        [Test]
+        public void SaveLoadTest()
+        {
+            Sheet spreadsheetSave = new Sheet(26, 50);
+            Sheet spreadsheetLoad = new Sheet(26, 50);
+
+            spreadsheetSave.ChangeText(0, 0, "25");
+            spreadsheetSave.ChangeText(0, 1, "=A1+5");
+            spreadsheetSave.ChangeBGColor(0, 1, 0x00800080); // purple
+
+            Assert.AreEqual(double.Parse(spreadsheetSave.GetCell(0, 0).Value), 25);
+            Assert.AreEqual(double.Parse(spreadsheetSave.GetCell(0, 1).Value), 25);
+            Assert.AreEqual(spreadsheetSave.GetCell(1, 2).BGColor, 0x00800080);
+
+            /* Save */
+            spreadsheetSave.SaveXML();
+
+            /* Load into spreadsheetLoad */
+            spreadsheetLoad.LoadXML();
+
+            Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 0).Value), 25);
+            Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 1).Value), 25);
+            Assert.AreEqual(spreadsheetLoad.GetCell(1, 2).BGColor, 0x00800080);
+        }
     }
 }
