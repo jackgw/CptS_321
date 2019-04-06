@@ -220,29 +220,37 @@ namespace CptS321
             Assert.AreEqual(spreadsheet.GetCell(1, 1).BGColor, 0x000FFFFF);
         }
 
+        /// <summary>
+        /// Tests the XML Saving and loading functionality of the spreadsheet
+        /// NOTE: filename is local to this machine, a new file will have to be created if this program is transferred
+        /// Can use the normal interface to do this ^^
+        /// </summary>
         [Test]
         public void SaveLoadTest()
         {
             Sheet spreadsheetSave = new Sheet(26, 50);
             Sheet spreadsheetLoad = new Sheet(26, 50);
 
+            /* Location of xml file for test use */
+            string filename = "C:\\Users\\jackg\\Desktop\\CptS 321\\GitLab\\CptS 321 HW9\\CptS 321 HW4\\XmlTestFile.xml";
+
             spreadsheetSave.ChangeText(0, 0, "25");
             spreadsheetSave.ChangeText(0, 1, "=A1+5");
             spreadsheetSave.ChangeBGColor(0, 1, 0x00800080); // purple
 
             Assert.AreEqual(double.Parse(spreadsheetSave.GetCell(0, 0).Value), 25);
-            Assert.AreEqual(double.Parse(spreadsheetSave.GetCell(0, 1).Value), 25);
-            Assert.AreEqual(spreadsheetSave.GetCell(1, 2).BGColor, 0x00800080);
+            Assert.AreEqual(double.Parse(spreadsheetSave.GetCell(0, 1).Value), 30);
+            Assert.AreEqual(spreadsheetSave.GetCell(0, 1).BGColor, (uint)0x00800080);
 
             /* Save */
-            spreadsheetSave.SaveXML();
+            spreadsheetSave.SaveXML(filename);
 
             /* Load into spreadsheetLoad */
-            spreadsheetLoad.LoadXML();
+            spreadsheetLoad.LoadXML(filename);
 
             Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 0).Value), 25);
-            Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 1).Value), 25);
-            Assert.AreEqual(spreadsheetLoad.GetCell(1, 2).BGColor, 0x00800080);
+            Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 1).Value), 30);
+            Assert.AreEqual(spreadsheetLoad.GetCell(0, 1).BGColor, (uint)0x00800080);
         }
     }
 }

@@ -483,6 +483,12 @@
             <param name="row">Row index of desired cell</param>
             <returns>The cell object at given index</returns>
         </member>
+        <member name="M:CptS321.Sheet.LoadXML(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filename"></param>
+        </member>
         <member name="M:CptS321.Sheet.SheetDependancyChangedHandler(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
             Handles dependancy changed of a cell by recalculating the value of that cell
@@ -536,6 +542,11 @@
             Checks the top of the redo stack. If stack is not empty, return the name. Returns 0 otherwise
             </summary>
             <returns>The name of the top item of the stack</returns>
+        </member>
+        <member name="M:CptS321.SheetInvoker.ClearStacks">
+            <summary>
+            Clears all contents from both stacks
+            </summary>
         </member>
         <member name="T:CptS321.SpreadsheetCell">
             <summary>

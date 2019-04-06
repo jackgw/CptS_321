@@ -10,6 +10,7 @@ namespace CptS321
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -120,19 +121,83 @@ namespace CptS321
         }
 
         /// <summary>
-        /// 
+        /// Saves the current contents of the spreadsheet to an XML document, given a pathname
         /// </summary>
-        public void SaveXML()
+        /// <param name="filename">Pathname of the xml file</param>
+        public void SaveXML(string filename)
         {
+            XmlWriter outfile = XmlWriter.Create(filename);
 
+            outfile.WriteStartDocument();
+            outfile.WriteStartElement("cells");
+
+            foreach (Cell cell in this.cells)
+            {
+                /* If cells attributues are not the default values */
+                if (cell.Text != string.Empty || cell.BGColor != 0xFFFFFFFF)
+                {
+                    outfile.WriteStartElement("cell");
+
+                    outfile.WriteAttributeString("row", cell.RowIndex.ToString());
+                    outfile.WriteAttributeString("col", cell.ColumnIndex.ToString());
+
+                    outfile.WriteStartElement("BGColor");
+                    outfile.WriteString(cell.BGColor.ToString());
+                    outfile.WriteEndElement();
+
+                    outfile.WriteStartElement("Text");
+                    outfile.WriteString(cell.Text);
+                    outfile.WriteEndElement();
+
+                    outfile.WriteEndElement();
+                }
+            }
+
+            outfile.WriteEndElement();
+            outfile.WriteEndDocument();
+
+            outfile.Close();
         }
 
         /// <summary>
-        /// 
+        /// Clears the contents of the spreadsheet and loads the contents of an xml file into the cells
         /// </summary>
-        public void LoadXML()
+        /// <param name="filename">Pathname of the xml file</param>
+        public void LoadXML(string filename)
         {
+            Cell tempCell = new SpreadsheetCell(-1, -1);
 
+            XmlReader infile = XmlReader.Create(filename);
+
+            /* Clear all cells */
+            foreach (Cell cell in this.cells)
+            {
+                cell.BGColor = 0xFFFFFFFF;
+                cell.Text = string.Empty;
+            }
+
+            while (!infile.EOF)
+            {
+                if (infile.NodeType == XmlNodeType.Element && infile.Name == "cell")
+                {
+                    tempCell = this.cells[int.Parse(infile.GetAttribute("col")), int.Parse(infile.GetAttribute("row"))];
+                    infile.Read();
+                }
+                else if (infile.NodeType == XmlNodeType.Element && infile.Name == "BGColor")
+                {
+                    tempCell.BGColor = uint.Parse(infile.ReadElementContentAsString());
+                }
+                else if (infile.NodeType == XmlNodeType.Element && infile.Name == "Text")
+                {
+                    tempCell.Text = infile.ReadElementContentAsString();
+                }
+                else
+                {
+                    infile.Read();
+                }
+            }
+
+            infile.Close();
         }
 
         /// <summary>

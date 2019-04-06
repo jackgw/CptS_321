@@ -90,5 +90,14 @@ namespace CptS321
 
             return string.Empty;
         }
+
+        /// <summary>
+        /// Clears all contents from both stacks
+        /// </summary>
+        public void ClearStacks()
+        {
+            this.redoStack.Clear();
+            this.undoStack.Clear();
+        }
     }
 }

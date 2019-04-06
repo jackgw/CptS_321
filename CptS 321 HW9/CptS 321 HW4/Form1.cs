@@ -12,10 +12,12 @@ namespace CptS321
     using System.ComponentModel;
     using System.Data;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
+    using System.Xml;
     using NUnit.Framework;
 
     /// <summary>
@@ -134,12 +136,28 @@ namespace CptS321
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.saveFileDialog1.Filter = "XML Files (*.xml)|*.xml";
+            this.saveFileDialog1.FilterIndex = 0;
+            this.saveFileDialog1.DefaultExt = "xml";
 
+            if (this.saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.spreadsheet.SaveXML(this.saveFileDialog1.FileName);
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.openFileDialog1.Filter = "XML Files (*.xml)|*.xml";
+            this.openFileDialog1.FilterIndex = 0;
+            this.openFileDialog1.DefaultExt = "xml";
 
+            if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.spreadsheet.LoadXML(this.openFileDialog1.FileName);
+                this.commandControl.ClearStacks();
+                this.CheckUndoRedo();
+            }
         }
 
         private void CheckUndoRedo()

@@ -197,6 +197,16 @@
             Interface representing a general command with Execute and Undo functionality
             </summary>
         </member>
+        <member name="M:CptS321.Command.Execute">
+            <summary>
+            Executes the command
+            </summary>
+        </member>
+        <member name="M:CptS321.Command.Undo">
+            <summary>
+            Undoes the last execution of the command
+            </summary>
+        </member>
         <member name="T:CptS321.CommandCollection">
             <summary>
             Encapsulates a List of simple Command objects and a title for the overall operation
@@ -473,6 +483,12 @@
             <param name="row">Row index of desired cell</param>
             <returns>The cell object at given index</returns>
         </member>
+        <member name="M:CptS321.Sheet.LoadXML(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filename"></param>
+        </member>
         <member name="M:CptS321.Sheet.SheetDependancyChangedHandler(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
             Handles dependancy changed of a cell by recalculating the value of that cell
@@ -526,6 +542,11 @@
             Checks the top of the redo stack. If stack is not empty, return the name. Returns 0 otherwise
             </summary>
             <returns>The name of the top item of the stack</returns>
+        </member>
+        <member name="M:CptS321.SheetInvoker.ClearStacks">
+            <summary>
+            Clears all contents from both stacks
+            </summary>
         </member>
         <member name="T:CptS321.SpreadsheetCell">
             <summary>
