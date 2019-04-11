@@ -28,7 +28,7 @@ namespace CptS321
         /// <summary>
         /// Initializes a new instance of the <see cref="CircularReferenceException"/> class.
         /// </summary>
-        /// <param name="arg">Error string</param>
+        /// <param name="arg">Error string for exception</param>
         public CircularReferenceException(string arg)
             : base(string.Format("Circular Reference: {0}", arg))
         {

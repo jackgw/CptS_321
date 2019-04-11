@@ -316,7 +316,7 @@ namespace CptS321
         /// <summary>
         /// Recursively checks all cells upon which a given cell is dependant to see if any are equal to the base cell
         /// </summary>
-        /// <param name="baseCell">base cell for comparison</param>
+        /// <param name="baseCell">base cell for comparison with current cell</param>
         /// <param name="currentCell">current cell in the recursion cycle</param>
         private void CheckCircularRef(Cell baseCell, Cell currentCell)
         {
