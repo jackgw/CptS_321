@@ -326,15 +326,19 @@ namespace CptS321
             }
             else
             {
-                ExpressionTree expTree = new ExpressionTree(currentCell.Text.TrimStart('='));
-                List<string> variableList = expTree.GetVariableNames();
-
-                foreach (string var in variableList)
+                /* Has an expression */
+                if (currentCell.Text != string.Empty && currentCell.Text[0] == '=')
                 {
-                    int colNum = var[0] - 65;
-                    int rowNum = int.Parse(var[1].ToString()) - 1;
+                    ExpressionTree expTree = new ExpressionTree(currentCell.Text.TrimStart('='));
+                    List<string> variableList = expTree.GetVariableNames();
 
-                    this.CheckCircularRef(baseCell, this.cells[colNum, rowNum]);
+                    foreach (string var in variableList)
+                    {
+                        int colNum = var[0] - 65;
+                        int rowNum = int.Parse(var[1].ToString()) - 1;
+
+                        this.CheckCircularRef(baseCell, this.cells[colNum, rowNum]);
+                    }
                 }
             }
         }

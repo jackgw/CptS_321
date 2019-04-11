@@ -58,5 +58,36 @@
             Tests the ability of the spreadsheet and it's underlying logic to undo changed BG color
             </summary>
         </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.SaveLoadTest">
+            <summary>
+            Tests the XML Saving and loading functionality of the spreadsheet
+            NOTE: filename is local to this machine, a new file will have to be created if this program is transferred
+            Can use the normal interface to do this ^^
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.InvalidReferenceTest">
+            <summary>
+            Tests the ability of the spreadsheet to detect an invalid reference and change the
+            value of the cell to an error message
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.OutOfBoundsTest">
+            <summary>
+            Tests the ability of the spreadsheet to detect an out of bouds reference and change the
+            value of the cell to an error message
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.SelfReferenceTest">
+            <summary>
+            Tests the ability of the spreadsheet to detect a self reference and change the
+            value of the cell to an error message
+            </summary>
+        </member>
+        <member name="M:CptS321.SpreadsheetEngineTest.CircularReferenceTest">
+            <summary>
+            Tests the ability of the spreadsheet to detect a circular reference and change the
+            value of the cell to an error message
+            </summary>
+        </member>
     </members>
 </doc>

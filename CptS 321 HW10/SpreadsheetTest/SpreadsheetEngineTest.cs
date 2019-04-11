@@ -252,5 +252,91 @@ namespace CptS321
             Assert.AreEqual(double.Parse(spreadsheetLoad.GetCell(0, 1).Value), 30);
             Assert.AreEqual(spreadsheetLoad.GetCell(0, 1).BGColor, (uint)0x00800080);
         }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet to detect an invalid reference and change the
+        /// value of the cell to an error message
+        /// </summary>
+        [Test]
+        public void InvalidReferenceTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+
+            spreadsheet.ChangeText(0, 0, "=12+fooref_123");
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(0, 0).Value, "!(Invalid Reference)");
+
+            spreadsheet.ChangeText(0, 0, "=12+B1");
+
+            /* Changes should update normally */
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(0, 0).Value), 12);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet to detect an out of bouds reference and change the
+        /// value of the cell to an error message
+        /// </summary>
+        [Test]
+        public void OutOfBoundsTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+
+            spreadsheet.ChangeText(0, 0, "=A75");
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(0, 0).Value, "!(Out of Bounds)");
+
+            spreadsheet.ChangeText(0, 0, "=A10");
+
+            /* Changes should update normally */
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(0, 0).Value), 0);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet to detect a self reference and change the
+        /// value of the cell to an error message
+        /// </summary>
+        [Test]
+        public void SelfReferenceTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+
+            spreadsheet.ChangeText(0, 0, "=300+(101*B1/A1)");
+
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(0, 0).Value, "!(Self Reference)");
+
+            spreadsheet.ChangeText(0, 0, "=300+(101*B1/100)");
+
+            /* Changes should update normally */
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(0, 0).Value), 300);
+        }
+
+        /// <summary>
+        /// Tests the ability of the spreadsheet to detect a circular reference and change the
+        /// value of the cell to an error message
+        /// </summary>
+        [Test]
+        public void CircularReferenceTest()
+        {
+            Sheet spreadsheet = new Sheet(26, 50);
+
+            spreadsheet.ChangeText(0, 0, "=10+A2");
+            spreadsheet.ChangeText(0, 1, "=2*B2");
+            spreadsheet.ChangeText(1, 1, "=4*B1");
+            spreadsheet.ChangeText(1, 0, "=20-A1"); // Circular reference
+
+            /* All invloved cells should display error */
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(0, 0).Value, "!(Circular Reference)");
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(0, 1).Value, "!(Circular Reference)");
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 1).Value, "!(Circular Reference)");
+            StringAssert.AreEqualIgnoringCase(spreadsheet.GetCell(1, 0).Value, "!(Circular Reference)");
+
+            spreadsheet.ChangeText(1, 0, "=20");
+
+            /* Changes should be updated normally */
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(1, 0).Value), 20);
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(1, 1).Value), 80);
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(0, 1).Value), 160);
+            Assert.AreEqual(double.Parse(spreadsheet.GetCell(0, 0).Value), 170);
+        }
     }
 }
