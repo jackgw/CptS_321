@@ -53,6 +53,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="ChangeColorCommand.cs" />
     <Compile Include="ChangeTextCommand.cs" />
+    <Compile Include="CircularReferenceException.cs" />
     <Compile Include="CloseParenthesesOperatorNode.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandCollection.cs" />

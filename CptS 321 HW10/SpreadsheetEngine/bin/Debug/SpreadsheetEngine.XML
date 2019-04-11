@@ -175,6 +175,22 @@
             Changes the text of the cell to its previous value
             </summary>
         </member>
+        <member name="T:CptS321.CircularReferenceException">
+            <summary>
+            Custom Exception for circular references within the spreadsheet engine
+            </summary>
+        </member>
+        <member name="M:CptS321.CircularReferenceException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.CircularReferenceException"/> class.
+            </summary>
+        </member>
+        <member name="M:CptS321.CircularReferenceException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CptS321.CircularReferenceException"/> class.
+            </summary>
+            <param name="arg">Error string</param>
+        </member>
         <member name="T:CptS321.CloseParenthesesOperatorNode">
             <summary>
             Operator node to represent open parentheses. For use in building tree but not to be evaluated
@@ -483,11 +499,17 @@
             <param name="row">Row index of desired cell</param>
             <returns>The cell object at given index</returns>
         </member>
+        <member name="M:CptS321.Sheet.SaveXML(System.String)">
+            <summary>
+            Saves the current contents of the spreadsheet to an XML document, given a pathname
+            </summary>
+            <param name="filename">Pathname of the xml file</param>
+        </member>
         <member name="M:CptS321.Sheet.LoadXML(System.String)">
             <summary>
-            
+            Clears the contents of the spreadsheet and loads the contents of an xml file into the cells
             </summary>
-            <param name="filename"></param>
+            <param name="filename">Pathname of the xml file</param>
         </member>
         <member name="M:CptS321.Sheet.SheetDependancyChangedHandler(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
@@ -509,6 +531,13 @@
             Checks the text of a cell to determine what to change the value to, and changes it
             </summary>
             <param name="targetCell">Cell to be changed</param>
+        </member>
+        <member name="M:CptS321.Sheet.CheckCircularRef(CptS321.Cell,CptS321.Cell)">
+            <summary>
+            Recursively checks all cells upon which a given cell is dependant to see if any are equal to the base cell
+            </summary>
+            <param name="baseCell">base cell for comparison</param>
+            <param name="currentCell">current cell in the recursion cycle</param>
         </member>
         <member name="T:CptS321.SheetInvoker">
             <summary>

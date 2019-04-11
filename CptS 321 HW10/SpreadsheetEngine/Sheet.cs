@@ -247,11 +247,52 @@ namespace CptS321
 
                 List<string> variableList = expTree.GetVariableNames();
 
-                /* Can assume that all variables will be cells in the form (A1, B2, etc.) for this Assignment */
                 foreach (string var in variableList)
                 {
+                    /* Check non-empty */
+                    if (var == string.Empty)
+                    {
+                        targetCell.ValueSet = "!(Empty Reference)";
+                        return;
+                    }
+
                     colNum = var[0] - 65;       // convert ascii to index
-                    rowNum = int.Parse(var[1].ToString()) - 1;
+
+                    /* check parseable */
+                    if (int.TryParse(var.TrimStart(var[0]), out rowNum))
+                    {
+                        rowNum -= 1;
+                    }
+                    else
+                    {
+                        targetCell.ValueSet = "!(Invalid Reference)";
+                        return;
+                    }
+
+                    /* Check out of bounds */
+                    if ((colNum > this.ColumnCount || colNum < 0) || (rowNum > this.rowCount || rowNum < 0))
+                    {
+                        targetCell.ValueSet = "!(Out of Bounds)";
+                        return;
+                    }
+
+                    /* Check for self reference */
+                    if (targetCell.RowIndex == rowNum && targetCell.ColumnIndex == colNum)
+                    {
+                        targetCell.ValueSet = "!(Self Reference)";
+                        return;
+                    }
+
+                    /* Check for Circular Reference */
+                    try
+                    {
+                        this.CheckCircularRef(targetCell, this.cells[colNum, rowNum]);
+                    }
+                    catch (CircularReferenceException)
+                    {
+                        targetCell.ValueSet = "!(Circular Reference)";
+                        return;
+                    }
 
                     /* subscribe dependant cell's dependancychanged to needed cell's propertychanged */
                     targetCell.UnsubscribeDependancy(ref this.cells[colNum, rowNum]);
@@ -265,11 +306,36 @@ namespace CptS321
                 }
 
                 targetCell.ValueSet = expTree.Evaluate().ToString();
-                Console.WriteLine(targetCell.Value);
             }
             else
             {
                 targetCell.ValueSet = targetCell.Text;
+            }
+        }
+
+        /// <summary>
+        /// Recursively checks all cells upon which a given cell is dependant to see if any are equal to the base cell
+        /// </summary>
+        /// <param name="baseCell">base cell for comparison</param>
+        /// <param name="currentCell">current cell in the recursion cycle</param>
+        private void CheckCircularRef(Cell baseCell, Cell currentCell)
+        {
+            if (currentCell == baseCell)
+            {
+                throw new CircularReferenceException();
+            }
+            else
+            {
+                ExpressionTree expTree = new ExpressionTree(currentCell.Text.TrimStart('='));
+                List<string> variableList = expTree.GetVariableNames();
+
+                foreach (string var in variableList)
+                {
+                    int colNum = var[0] - 65;
+                    int rowNum = int.Parse(var[1].ToString()) - 1;
+
+                    this.CheckCircularRef(baseCell, this.cells[colNum, rowNum]);
+                }
             }
         }
     }
