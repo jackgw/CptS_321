@@ -189,7 +189,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:CptS321.CircularReferenceException"/> class.
             </summary>
-            <param name="arg">Error string</param>
+            <param name="arg">Error string for exception</param>
         </member>
         <member name="T:CptS321.CloseParenthesesOperatorNode">
             <summary>
@@ -536,7 +536,7 @@
             <summary>
             Recursively checks all cells upon which a given cell is dependant to see if any are equal to the base cell
             </summary>
-            <param name="baseCell">base cell for comparison</param>
+            <param name="baseCell">base cell for comparison with current cell</param>
             <param name="currentCell">current cell in the recursion cycle</param>
         </member>
         <member name="T:CptS321.SheetInvoker">
