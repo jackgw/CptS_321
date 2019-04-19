@@ -1,4 +1,4 @@
-﻿// <copyright file="BST.cs" company="PlaceholderCompany">
+﻿// <copyright file="BSTTest.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -55,7 +55,7 @@ namespace CptS321
 
             /* Test print output */
             StringAssert.AreEqualIgnoringCase(myBST.PrintTreeStack(),
-                "[Recursive Traversal]\nTree Size: 8\nTree Contents: [1 2 5 15 25 40 80 99 ]\n");
+                "[Stack Traversal]\nTree Size: 8\nTree Contents: [1 2 5 15 25 40 80 99 ]\n");
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace CptS321
 
             /* Test print output */
             StringAssert.AreEqualIgnoringCase(myBST.PrintTreeNoStackOrRecursion(),
-                "[Recursive Traversal]\nTree Size: 8\nTree Contents: [1 2 5 15 25 40 80 99 ]\n");
+                "[No Stack or Recursion Traversal]\nTree Size: 8\nTree Contents: [1 2 5 15 25 40 80 99 ]\n");
         }
     }
 }

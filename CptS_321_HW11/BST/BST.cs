@@ -103,7 +103,9 @@ namespace CptS321
                 {
                     /* Find max node in left subtree */
                     tempNode = curNode.LeftNode;
-                    while (tempNode.RightNode != null && tempNode.RightNode != curNode)   // have to check against curNode to prevent circular loops
+
+                    /* have to check against curNode to prevent circular loops */
+                    while (tempNode.RightNode != null && tempNode.RightNode != curNode)
                     {
                         tempNode = tempNode.RightNode;
                     }
