@@ -23,6 +23,7 @@ namespace CptS321
         {
             BST myBST = new BST();
             myBST.BuildTree();
+            myBST.PrintTreeNoStackOrRecursion();
             myBST.PrintTreeStack();
             myBST.PrintTreeRecursive();
         }

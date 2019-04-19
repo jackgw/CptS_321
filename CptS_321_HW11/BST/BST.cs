@@ -84,7 +84,50 @@ namespace CptS321
         /// <returns>The string output</returns>
         public string PrintTreeNoStackOrRecursion()
         {
-            return "";
+            BSTNode curNode = this.root, tempNode;
+            string output = "[No Stack or Recursion Traversal]\n";
+            output += "Tree Size: " + this.size;
+            output += "\nTree Contents: [";
+
+            while (curNode != null)
+            {
+                /* no left child */
+                if (curNode.LeftNode == null)
+                {
+                    output += curNode.Value + " ";
+                    curNode = curNode.RightNode;
+                }
+
+                /* Has left child, move cur subtree */
+                else
+                {
+                    /* Find max node in left subtree */
+                    tempNode = curNode.LeftNode;
+                    while (tempNode.RightNode != null && tempNode.RightNode != curNode)   // have to check against curNode to prevent circular loops
+                    {
+                        tempNode = tempNode.RightNode;
+                    }
+
+                    // If no circular loops
+                    if (tempNode.RightNode == null)
+                    {
+                        /* make cur the right node of temp */
+                        tempNode.RightNode = curNode;
+                        curNode = curNode.LeftNode;
+                    }
+                    else
+                    {
+                        /* circular loops found, clear change to restore tree */
+                        tempNode.RightNode = null;
+                        output += curNode.Value + " ";
+                        curNode = curNode.RightNode;
+                    }
+                }
+            }
+
+            output += "]\n";
+            Console.WriteLine(output);
+            return output;
         }
 
         /// <summary>
