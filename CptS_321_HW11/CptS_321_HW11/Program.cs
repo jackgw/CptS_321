@@ -1,15 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="Program.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
-namespace CptS_321_HW11
+namespace CptS321
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Primary class for the prorgam. contains main()
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Main() function. Creates a new bst and prints the contents using the 3 implemented methods
+        /// </summary>
+        /// <param name="args"></param>
+        public static void Main(string[] args)
         {
+            BST myBST = new BST();
+            myBST.BuildTree();
+            myBST.PrintTreeStack();
+            myBST.PrintTreeRecursive();
         }
     }
 }

@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CptS_321_HW11", "CptS_321_HW11\CptS_321_HW11.csproj", "{AE24A63F-E186-4FF0-8ED0-5EF4A238DCBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BST", "BST\BST.csproj", "{ADFD7566-C3D3-42AA-8AA1-895AD12AE81B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BST Test", "BST Test\BST Test.csproj", "{25A1FDAA-73FB-42CF-B7CD-7F297A672CCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AE24A63F-E186-4FF0-8ED0-5EF4A238DCBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE24A63F-E186-4FF0-8ED0-5EF4A238DCBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE24A63F-E186-4FF0-8ED0-5EF4A238DCBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADFD7566-C3D3-42AA-8AA1-895AD12AE81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADFD7566-C3D3-42AA-8AA1-895AD12AE81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADFD7566-C3D3-42AA-8AA1-895AD12AE81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADFD7566-C3D3-42AA-8AA1-895AD12AE81B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A1FDAA-73FB-42CF-B7CD-7F297A672CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A1FDAA-73FB-42CF-B7CD-7F297A672CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A1FDAA-73FB-42CF-B7CD-7F297A672CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A1FDAA-73FB-42CF-B7CD-7F297A672CCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
