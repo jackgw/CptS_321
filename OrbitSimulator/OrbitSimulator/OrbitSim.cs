@@ -34,7 +34,7 @@ namespace CptS321
         }
 
         /// <summary>
-        /// Test function testing the rotation capability of the class
+        /// Test function testing the rotation capability of the class.
         /// </summary>
         [Test]
         public void RotateTest()

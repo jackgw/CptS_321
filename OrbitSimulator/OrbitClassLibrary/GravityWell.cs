@@ -12,7 +12,7 @@ namespace CptS321
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Class representing a gravity well with a set of coordinates and an influence radius
+    /// Class representing a gravity well with a set of coordinates and an influence radius.
     /// </summary>
     public class GravityWell
     {

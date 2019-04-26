@@ -12,7 +12,7 @@ namespace CptS321
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Planet class containing a set of coordinates
+    /// Planet class containing a set of coordinates.
     /// </summary>
     public class Planet
     {
