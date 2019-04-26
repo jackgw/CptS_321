@@ -22,7 +22,6 @@ namespace CptS321
     {
         private List<GravityWell> gravityWells = new List<GravityWell>();
         private List<Planet> planets = new List<Planet>();
-        int direction = 1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OrbitSim"/> class.
@@ -32,6 +31,54 @@ namespace CptS321
             this.InitializeComponent();
             this.tickTimer.Enabled = true;
             this.DoubleBuffered = true;
+        }
+
+        /// <summary>
+        /// Test function testing the rotation capability of the class
+        /// </summary>
+        [Test]
+        public void RotateTest()
+        {
+            Point center = new Point(0, 0);
+            Point outer = new Point(100, 100);
+            Point rotated;
+
+            rotated = this.RotateCoordinates(center, outer, 90);    // rotate by 90 degrees
+            Assert.AreEqual(rotated.X, -100);
+            Assert.AreEqual(rotated.Y, 100);
+
+            center = new Point(50, 50);
+            outer = new Point(60, 50);
+            rotated = this.RotateCoordinates(center, outer, 180);    // rotate by 180 degrees
+            Assert.AreEqual(rotated.X, 40);
+            Assert.AreEqual(rotated.Y, 50);
+
+            center = new Point(50, 50);
+            outer = new Point(40, 40);
+            rotated = this.RotateCoordinates(center, outer, 45);    // rotate by 45 degrees
+            Assert.AreEqual(rotated.X, 50);
+            Assert.AreEqual(rotated.Y, 36);
+        }
+
+        /// <summary>
+        /// Test function testing the Infuence-checking capability of the class
+        /// </summary>
+        [Test]
+        public void InfluenceTest()
+        {
+            GravityWell well = new GravityWell(50, 50, 20);
+            Planet planet = new Planet(50, 50);
+
+            Assert.IsTrue(this.IsUnderInfluence(planet, well));
+
+            planet = new Planet(50, 60);
+            Assert.IsTrue(this.IsUnderInfluence(planet, well));
+
+            planet = new Planet(50, 70);
+            Assert.IsTrue(this.IsUnderInfluence(planet, well));
+
+            planet = new Planet(50, 80);
+            Assert.IsTrue(!this.IsUnderInfluence(planet, well));
         }
 
         /// <summary>
@@ -109,7 +156,6 @@ namespace CptS321
         /// <param name="rotating">Point to be rotated</param>
         /// <param name="angleDegrees">Angle in degrees</param>
         /// <returns>The new point containing rotated coordinates</returns>
-        
         private Point RotateCoordinates(Point center, Point rotating, double angleDegrees)
         {
             double radians = angleDegrees * (Math.PI / 180);
@@ -128,6 +174,12 @@ namespace CptS321
             return rotating;
         }
 
+        /// <summary>
+        /// Checks whether the given planet is within the circle of influence of the gravity well
+        /// </summary>
+        /// <param name="planet">Planet to be checked</param>
+        /// <param name="well">GravityWell to be checked</param>
+        /// <returns>true if the planet is affected, false otherwise</returns>
         private bool IsUnderInfluence(Planet planet, GravityWell well)
         {
             /* get distance betweem the center points of both entities */
